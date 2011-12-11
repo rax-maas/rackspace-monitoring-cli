@@ -1,4 +1,4 @@
-# Libcloud Monitoring CLI
+# Rackspace Monitoring CLI
 
 Command line utility for rackspace-monitoring library.
 
