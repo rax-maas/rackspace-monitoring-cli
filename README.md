@@ -47,55 +47,55 @@ Use a comma delimited string of key=value pairs. For example
 
 ### Create
 
-* `raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2> \  
+* `raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>
                         --metadata=<foo=bar,bar=foo>`
-* `raxmon-checks-create --label=<label> --type=<check type> \  
-                      --monitoring-zones=<monitoring zones> \  
-                      --details=<details> \
-                      [--target-alias=<target alias>] \
-                      [--target-resolver=<target resolver>] \
-                      [--timeout=<timeout>] \
+* `raxmon-checks-create --label=<label> --type=<check type>
+                      --monitoring-zones=<monitoring zones>
+                      --details=<details>
+                      [--target-alias=<target alias>]
+                      [--target-resolver=<target resolver>]
+                      [--timeout=<timeout>]
                       [--period=<period>]`
-* `raxmon-alarms-create --entity-id=<entity id> \
-                      --criteria=<criteria> \
-                      --notification-plan-id=<notification plan id> \
-                      [--check-type=<check type>] \
+* `raxmon-alarms-create --entity-id=<entity id>
+                      --criteria=<criteria>
+                      --notification-plan-id=<notification plan id>
+                      [--check-type=<check type>]
                       [--check-id=<check id>]`
-* `raxmon-notifications-create --label \
-                      --type=<type> \
+* `raxmon-notifications-create --label
+                      --type=<type>
                       --details=<details>`
-* `raxmon-notification-plans-create --label=<label> \
-                      [--critical-state=<critical state notification object ids>] \
-                      [--warning-state=<warning state notification object ids>] \
+* `raxmon-notification-plans-create --label=<label>
+                      [--critical-state=<critical state notification object ids>]
+                      [--warning-state=<warning state notification object ids>]
                       [--ok-state=<ok state notification object ids>]`
 
 ### Update
 
-* `raxmon-entities-update --id=<entity id> [--label=<label>] \
-                        [--ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>] \
+* `raxmon-entities-update --id=<entity id> [--label=<label>]
+                        [--ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>]
                         [--metadata=<foo=bar,bar=foo>]`
-* `raxmon-checks-update --entity-id=<entity id> --id=<check id> \
-                      [--label=<label>] [--type=<check type>] \
-                      [--monitoring-zones=<monitoring zones>] \
-                      [--details=<details>] \
-                      [--target-alias=<target alias>] \
-                      [--target-resolver=<target resolver>] \
-                      [--timeout=<timeout>] \
+* `raxmon-checks-update --entity-id=<entity id> --id=<check id>
+                      [--label=<label>] [--type=<check type>]
+                      [--monitoring-zones=<monitoring zones>]
+                      [--details=<details>]
+                      [--target-alias=<target alias>]
+                      [--target-resolver=<target resolver>]
+                      [--timeout=<timeout>]
                       [--period=<period>]`
-* `raxmon-alarms-update --entity-id=<entity id> \
+* `raxmon-alarms-update --entity-id=<entity id>
                       --id=<alarm id>\
-                      [--criteria=<criteria>] \
-                      [--notification-plan-id=<notification plan id>] \
-                      [--check-type=<check type>] \
+                      [--criteria=<criteria>]
+                      [--notification-plan-id=<notification plan id>]
+                      [--check-type=<check type>]
                       [--check-id=<check id>]`
-* `raxmon-notifications-update --id=<notification id> \
-                      [--label=<label>] \
-                      [--type=<type>] \
+* `raxmon-notifications-update --id=<notification id>
+                      [--label=<label>]
+                      [--type=<type>]
                       [--details=<details>]`
 * `raxmon-notification-plans-update --id=<notification plan id>
-                      [--label=<label>] \
-                      [--critical-state=<critical state notification object ids>] \
-                      [--warning-state=<warning state notification object ids>] \
+                      [--label=<label>]
+                      [--critical-state=<critical state notification object ids>]
+                      [--warning-state=<warning state notification object ids>]
                       [--ok-state=<ok state notification object ids>]`
 
 ### Delete
