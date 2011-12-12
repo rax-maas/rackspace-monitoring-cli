@@ -60,8 +60,8 @@ setup(
     version=read_version_string(),
     description='Command Line Utility for rackspace-monitoring library',
     author='Rackspace',
-    author_email='',
-    requires=(['apache_libcloud(>=0.7.1)']),
+    author_email='tba',
+    requires=(['rackspace_monitoring(>=0.1.0)']),
     scripts=os.listdir(pjoin(os.getcwd(), 'commands/')),
     packages=[
         'raxmon_cli',
@@ -70,12 +70,11 @@ setup(
         'raxmon_cli': 'raxmon_cli',
     },
     license='Apache License (2.0)',
-    url='http://libcloud.apache.org/',
+    url='tba',
     cmdclass={
         'pep8': Pep8Command
     },
     classifiers=[
-        'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: Apache Software License',
