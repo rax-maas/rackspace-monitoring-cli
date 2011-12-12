@@ -14,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
 
 OPTIONS = None
 REQUIRED_OPTIONS = None
 
 def callback(driver, options, args, callback):
-    callback(driver.list_alarm_changelog())
+    callback(driver.list_monitoring_zones())
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'alarm_changelog', 'list', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'monitoring_zones', 'list', callback)

@@ -14,13 +14,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
+from raxmon_cli.utils import str_to_dict, instance_to_dict
 
-OPTIONS = None
-REQUIRED_OPTIONS = None
+OPTIONS = [
+    [['--id'], {'dest': 'id', 'help': 'Notification id'}],
+    [['--label'], {'dest': 'label', 'help': 'Notification label'}],
+    [['--type'], {'dest': 'type', 'help': 'Notification type'}],
+    [['--details'], {'dest': 'details', 'help': 'Notification details'}],
+]
+
+REQUIRED_OPTIONS = ['id']
 
 def callback(driver, options, args, callback):
-    result = driver.ex_limits()
+    options.details = str_to_dict(options.details)
+    no = driver.get_notification(notification_id=options.id)
+
+    data = instance_to_dict(options, ['label', 'type', 'details'], False)
+    result = driver.update_notification(notification=no, data=data)
     callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'limits', 'view', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'notifications', 'update', callback)

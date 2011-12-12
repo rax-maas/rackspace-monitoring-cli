@@ -14,12 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
-from lcmon_cli.utils import str_to_dict, str_to_list, instance_to_dict
+from raxmon_cli.common import run_action
+from raxmon_cli.utils import str_to_dict, str_to_list
 
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
-    [['--id'], {'dest': 'id', 'help': 'Check ID'}],
     [['--label'], {'dest': 'label', 'help': 'Check label'}],
     [['--type'], {'dest': 'type', 'help': 'Check type'}],
     [['--details'], {'dest': 'details', 'help': 'Check details'}],
@@ -30,17 +29,19 @@ OPTIONS = [
     [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}]
 ]
 
-REQUIRED_OPTIONS = ['entity_id', 'id']
+REQUIRED_OPTIONS = ['entity_id', 'label', 'type', 'monitoring_zones']
 
 def callback(driver, options, args, callback):
     options.monitoring_zones = str_to_list(options.monitoring_zones)
     options.details = str_to_dict(options.details)
-    keys = ['label', 'type', 'details', 'timeout', 'period', 'monitoring_zones',
-            'target_alias', 'target_resolver']
-
-    ch = driver.get_check(entity_id=options.entity_id, check_id=options.id)
-    data = instance_to_dict(options, keys, False)
-    result = driver.update_check(check=ch, data=data)
+    en = driver.get_entity(entity_id=options.entity_id)
+    result = driver.create_check(label=options.label, timeout=options.timeout,
+                                 period=options.period, entity=en,
+                                 monitoring_zones=options.monitoring_zones,
+                                 target_alias=options.target_alias,
+                                 target_resolver=options.target_resolver,
+                                 type=options.type,
+                                 details=options.details)
     callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'update', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'create', callback)

@@ -14,20 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
 
-OPTIONS = [
-    [['--id'], {'dest': 'id', 'help': 'Entity ID'}],
-    [['--delete-children'], {'dest': 'delete_children', 'action': 'store_true',
-                             'help': 'Delete all the Entity children objects'}]
-]
-
-REQUIRED_OPTIONS = ['id']
+from raxmon_cli.common import run_action
 
 def callback(driver, options, args, callback):
-    en = driver.get_entity(entity_id=options.id)
-    status = driver.delete_entity(entity=en,
-                                  ex_delete_children=options.delete_children)
-    callback(status)
+    callback(driver.list_entities())
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'entities', 'delete', callback)
+run_action(None, None, 'entities', 'list', callback)

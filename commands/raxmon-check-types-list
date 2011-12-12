@@ -14,12 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
 
 OPTIONS = None
 REQUIRED_OPTIONS = None
 
 def callback(driver, options, args, callback):
-    callback(driver.list_notification_plans())
+    callback(driver.list_check_types())
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'notification_plans', 'list', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'check_types', 'list', callback)

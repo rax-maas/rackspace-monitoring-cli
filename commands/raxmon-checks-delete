@@ -14,16 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
 
 OPTIONS = [
-    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity id'}],
+    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
+    [['--id'], {'dest': 'id', 'help': 'Check ID'}]
 ]
 
-REQUIRED_OPTIONS = ['entity_id']
+REQUIRED_OPTIONS = ['entity_id', 'id']
 
 def callback(driver, options, args, callback):
-    en = driver.get_entity(entity_id=options.entity_id)
-    callback(driver.list_alarms(entity=en))
+    ch = driver.get_check(entity_id=options.entity_id, check_id=options.id)
+    status = driver.delete_check(check=ch)
+    callback(status)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'list', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'delete', callback)

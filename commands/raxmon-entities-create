@@ -14,16 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
+from raxmon_cli.utils import str_to_dict
 
 OPTIONS = [
-    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity id'}],
+    [['--label'], {'dest': 'label', 'help': 'Entity label'}],
+    [['--ip-addresses'], {'dest': 'ip_addresses', 'help': 'Entity IP addresses'}],
+    [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}]
 ]
 
-REQUIRED_OPTIONS = ['entity_id']
+REQUIRED_OPTIONS = ['label']
 
 def callback(driver, options, args, callback):
-    en = driver.get_entity(entity_id=options.entity_id)
-    callback(driver.list_checks(entity=en))
+    options.ip_addresses = str_to_dict(options.ip_addresses)
+    options.metadata = str_to_dict(options.metadata)
+    result = driver.create_entity(label=options.label,
+                                  ip_addresses=options.ip_addresses,
+                                  metadata=options.metadata)
+    callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'list', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'entities', 'create', callback)

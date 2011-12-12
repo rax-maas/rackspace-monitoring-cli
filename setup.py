@@ -25,7 +25,7 @@ from os.path import join as pjoin
 def read_version_string():
     version = None
     sys.path.insert(0, pjoin(os.getcwd()))
-    from lcmon_cli import __version__
+    from raxmon_cli import __version__
     version = __version__
     sys.path.pop(0)
     return version
@@ -51,7 +51,7 @@ class Pep8Command(Command):
             sys.exit(1)
 
         cwd = os.getcwd()
-        retcode = call(('pep8 %s/lcmon_cli/' %
+        retcode = call(('pep8 %s/raxmon_cli/' %
                 (cwd)).split(' '))
         sys.exit(retcode)
 
@@ -64,10 +64,10 @@ setup(
     requires=(['apache_libcloud(>=0.7.1)']),
     scripts=os.listdir(pjoin(os.getcwd(), 'commands/')),
     packages=[
-        'lcmon_cli',
+        'raxmon_cli',
     ],
     package_dir={
-        'lcmon_cli': 'lcmon_cli',
+        'raxmon_cli': 'raxmon_cli',
     },
     license='Apache License (2.0)',
     url='http://libcloud.apache.org/',

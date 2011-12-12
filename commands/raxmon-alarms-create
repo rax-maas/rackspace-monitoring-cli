@@ -14,22 +14,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
-from lcmon_cli.utils import str_to_dict
+from raxmon_cli.common import run_action
 
 OPTIONS = [
-    [['--label'], {'dest': 'label', 'help': 'Notification label'}],
-    [['--type'], {'dest': 'type', 'help': 'Notification type'}],
-    [['--details'], {'dest': 'details', 'help': 'Notification details'}],
+    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
+    [['--check-type'], {'dest': 'check_type', 'help': 'Check type'}],
+    [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
+    [['--criteria'], {'dest': 'criteria', 'help': 'Alarm criteria'}],
+    [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}]
 ]
 
-REQUIRED_OPTIONS = ['label', 'type', 'details']
+REQUIRED_OPTIONS = ['entity_id', 'criteria']
 
 def callback(driver, options, args, callback):
-    options.details = str_to_dict(options.details)
-    result = driver.create_notification(label=options.label,
-                                        type=options.type,
-                                        details=options.details)
+    en = driver.get_entity(entity_id=options.entity_id)
+    result = driver.create_alarm(entity=en, check_type=options.check_type,
+                                 check_id=options.check_id, criteria=options.criteria,
+                                 notification_plan_id=options.notification_plan_id)
     callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'notifications', 'create', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'create', callback)

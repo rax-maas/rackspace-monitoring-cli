@@ -14,17 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from lcmon_cli.common import run_action
+from raxmon_cli.common import run_action
 
-OPTIONS = [
-    [['--id'], {'dest': 'id', 'help': 'Notification ID'}]
-]
-
-REQUIRED_OPTIONS = ['id']
+OPTIONS = None
+REQUIRED_OPTIONS = None
 
 def callback(driver, options, args, callback):
-    np = driver.get_notification_plan(notification_plan_id=options.id)
-    status = driver.delete_notification_plan(notification_plan=np)
-    callback(status)
+    callback(driver.list_audits())
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'notification_plans', 'delete', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'audits', 'list', callback)
