@@ -55,14 +55,17 @@ class Pep8Command(Command):
                 (cwd)).split(' '))
         sys.exit(retcode)
 
+scripts = os.listdir(pjoin(os.getcwd(), 'commands/'))
+scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
+
 setup(
     name='rackspace-monitoring-cli',
     version=read_version_string(),
     description='Command Line Utility for rackspace-monitoring library',
     author='Rackspace',
-    author_email='tba',
+    author_email='cmbeta@rackspace.com',
     requires=(['rackspace_monitoring(>=0.1.0)']),
-    scripts=os.listdir(pjoin(os.getcwd(), 'commands/')),
+    scripts=scripts,
     packages=[
         'raxmon_cli',
     ],
