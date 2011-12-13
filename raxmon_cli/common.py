@@ -16,8 +16,8 @@
 from pprint import pprint
 from optparse import OptionParser
 
-from libcloud_monitoring.providers import get_driver
-from libcloud_monitoring.types import Provider
+from rackspace_monitoring.providers import get_driver
+from rackspace_monitoring.types import Provider
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
 from raxmon_cli.printers import print_list, print_error, print_success
