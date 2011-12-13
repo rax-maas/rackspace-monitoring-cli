@@ -6,6 +6,19 @@ Command line utility for rackspace-monitoring library.
 
 `pip install rackspace-monitoring-cli`
 
+## Settings Credentials
+
+Credentials can be set in a configuration file (`~/.raxrc`) or you can pass 
+them manually to each command.
+
+### Example configuration file
+
+```
+[credentials]
+username=foo
+api_key=bar
+```
+
 ## Usage
 
 ### General
