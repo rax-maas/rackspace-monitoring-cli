@@ -14,9 +14,17 @@
 # limitations under the License.
 
 __all__ = [
+    'CREDENTIALS_FILE',
+    'CONFIG_PATH',
     'GLOBAL_OPTIONS',
     'ACTION_OPTIONS'
 ]
+
+import os
+from os.path import join as pjoin, expanduser
+
+CREDENTIALS_FILE = '.raxrc'
+CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
 # TODO
 API_URL = ''

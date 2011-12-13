@@ -13,10 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import ConfigParser
+
+from raxmon_cli.constants import CONFIG_PATH
+
 __all___ = [
     'str_to_list',
     'str_to_dict',
-    'instance_to_dict'
+    'instance_to_dict',
+    'get_credentials'
 ]
 
 
@@ -55,3 +60,16 @@ def instance_to_dict(instance, keys, include_none=False):
 
         result[key] = value
     return result
+
+
+def get_credentials():
+    config = ConfigParser.ConfigParser()
+    config.read(CONFIG_PATH)
+
+    try:
+        username = config.get('credentials', 'username', None)
+        api_key = config.get('credentials', 'api_key', None)
+    except ConfigParser.Error:
+        return (None, None)
+
+    return (username, api_key)

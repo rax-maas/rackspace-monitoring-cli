@@ -13,6 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import sys
 from pprint import pprint
 from optparse import OptionParser
 
@@ -21,6 +22,7 @@ from rackspace_monitoring.types import Provider
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
 from raxmon_cli.printers import print_list, print_error, print_success
+from raxmon_cli.utils import get_credentials
 
 __all__ = [
     'run_action',
@@ -66,6 +68,20 @@ def run_action(cmd_options, required_options, resource, action, callback):
     for option in required_options:
         if not getattr(options, option, None):
             raise Exception('Missing required option: ' + option)
+
+    username, api_key = get_credentials()
+
+    if options.username:
+        username = options.username
+
+    if options.api_key:
+        api_key = options.api_key
+
+    if not username or not api_key:
+        print('No username and API key provided!')
+        print('You need to either put credentials in ~/.raxrc or ' +
+              'pass them to the command using --username and --api-key option')
+        sys.exit(1)
 
     instance = get_instance(options.username, options.api_key,
                             options.api_url)
