@@ -131,3 +131,7 @@ Use a comma delimited string of key=value pairs. For example
 ### Other
 
 * `raxmon-views-overview`
+
+# Issues, Feedback
+
+Please use Github issue tracker or send an email to `cmbeta@rackspace.com`.
