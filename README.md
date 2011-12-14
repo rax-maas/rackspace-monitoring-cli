@@ -7,12 +7,16 @@ Command line utility for rackspace-monitoring library.
 Utility can be installed using `pip`:
 
 ```bash
-pip install rackspace-monitoring-cli
+sudo pip install rackspace-monitoring-cli
 ```
+
+Note: If you don't use a virtual environment the library needs to be installed
+under the user which has a write permission to `/usr/local/bin` where the script
+files are installed.
 
 ## Settings Credentials
 
-Credentials can be set in a configuration file (`~/.raxrc`) or you can pass 
+Credentials can be set in a configuration file (`~/.raxrc`) or you can pass
 them manually to each command.
 
 ### Example configuration file
@@ -25,6 +29,25 @@ url=http://www.test.com/v1.0
 username=foo
 api_key=bar
 ```
+
+# Certificate verification
+
+Libcloud verifies server SSL certificate by default. This means you need to
+have the correct CA certificate files installed on your computer for this
+library to work.
+
+If Libcloud cannot find CA ertificate files, you will see an error similar to
+the one bellow:
+
+`"RuntimeError: No CA Certificates were found in CA_CERTS_PATH."`
+
+This can be addresses by installing the CA certificate files. Bellow you can
+find the names of the packages which include CA certificate files.
+
+* **openssl** on CentOS/Fedora (yum)
+* **ca-certificates** on Debian/Ubuntu/Arch/Gentoo (apt-get)
+* **ca_root_nss** on FreeBSD (ports)
+* **curl-ca-bundle** on Mac OS X (ports)
 
 ## Usage
 
