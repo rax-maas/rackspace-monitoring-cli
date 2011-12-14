@@ -16,6 +16,7 @@
 __all__ = [
     'CREDENTIALS_FILE',
     'CONFIG_PATH',
+    'API_URL_ADDRESS',
     'GLOBAL_OPTIONS',
     'ACTION_OPTIONS'
 ]
@@ -27,7 +28,7 @@ CREDENTIALS_FILE = '.raxrc'
 CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
 # TODO
-API_URL = ''
+API_URL_ADDRESS = 'https://cmbeta.api.rackspacecloud.com/v1.0'
 
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]
 API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]

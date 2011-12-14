@@ -21,6 +21,7 @@ from rackspace_monitoring.providers import get_driver
 from rackspace_monitoring.types import Provider
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
+from raxmon_cli.constants import API_URL_ADDRESS
 from raxmon_cli.printers import print_list, print_error, print_success
 from raxmon_cli.utils import get_credentials
 
@@ -77,14 +78,18 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.api_key:
         api_key = options.api_key
 
+    api_url = API_URL_ADDRESS
+
+    if options.api_url:
+        api_url = options.api_url
+
     if not username or not api_key:
         print('No username and API key provided!')
         print('You need to either put credentials in ~/.raxrc or ' +
               'pass them to the command using --username and --api-key option')
         sys.exit(1)
 
-    instance = get_instance(options.username, options.api_key,
-                            options.api_url)
+    instance = get_instance(username, api_key, api_url)
 
     try:
         callback(instance, options, args, done)
