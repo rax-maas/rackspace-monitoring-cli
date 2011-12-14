@@ -27,7 +27,6 @@ from os.path import join as pjoin, expanduser
 CREDENTIALS_FILE = '.raxrc'
 CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
-# TODO
 API_URL_ADDRESS = 'https://cmbeta.api.rackspacecloud.com/v1.0'
 
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]

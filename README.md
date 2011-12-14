@@ -4,7 +4,13 @@ Command line utility for rackspace-monitoring library.
 
 ## Installation
 
-`pip install rackspace-monitoring-cli`
+Utility can be installed using `pip`:
+
+```bash
+pip install apache-libcloud
+pip install rackspace-monitoring
+pip install rackspace-monitoring-cli
+```
 
 ## Settings Credentials
 
@@ -14,6 +20,9 @@ them manually to each command.
 ### Example configuration file
 
 ```
+[api]
+url=http://www.test.com/v1.0
+
 [credentials]
 username=foo
 api_key=bar

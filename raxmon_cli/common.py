@@ -14,6 +14,7 @@
 # limitations under the License.
 
 import sys
+import traceback
 from pprint import pprint
 from optparse import OptionParser
 
@@ -70,7 +71,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
         if not getattr(options, option, None):
             raise Exception('Missing required option: ' + option)
 
-    username, api_key = get_credentials()
+    username, api_key, api_url = get_credentials()
 
     if options.username:
         username = options.username
@@ -78,7 +79,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.api_key:
         api_key = options.api_key
 
-    api_url = API_URL_ADDRESS
+    api_url = api_url or API_URL_ADDRESS
 
     if options.api_url:
         api_url = options.api_url
@@ -93,8 +94,8 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     try:
         callback(instance, options, args, done)
-    except Exception, e:
-        print_error(e)
+    except Exception:
+        traceback.print_exc(file=sys.stderr)
 
 
 def get_instance(username, api_key, url):

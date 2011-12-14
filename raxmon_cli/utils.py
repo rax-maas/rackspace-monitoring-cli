@@ -68,8 +68,17 @@ def get_credentials():
 
     try:
         username = config.get('credentials', 'username', None)
+    except ConfigParser.Error:
+        username = None
+
+    try:
         api_key = config.get('credentials', 'api_key', None)
     except ConfigParser.Error:
-        return (None, None)
+        api_key = None
 
-    return (username, api_key)
+    try:
+        api_url = config.get('api', 'url', None)
+    except ConfigParser.Error:
+        api_url = None
+
+    return (username, api_key, api_url)
