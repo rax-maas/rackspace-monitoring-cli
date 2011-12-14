@@ -7,8 +7,6 @@ Command line utility for rackspace-monitoring library.
 Utility can be installed using `pip`:
 
 ```bash
-pip install apache-libcloud
-pip install rackspace-monitoring
 pip install rackspace-monitoring-cli
 ```
 
