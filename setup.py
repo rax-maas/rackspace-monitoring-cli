@@ -64,7 +64,7 @@ setup(
     description='Command Line Utility for rackspace-monitoring library',
     author='Rackspace',
     author_email='cmbeta@rackspace.com',
-    requires=(['rackspace_monitoring(>=0.1.0)']),
+    install_requires=['rackspace_monitoring(>=0.1.0)'],
     scripts=scripts,
     packages=[
         'raxmon_cli',
