@@ -58,13 +58,19 @@ class Pep8Command(Command):
 scripts = os.listdir(pjoin(os.getcwd(), 'commands/'))
 scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 
+pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
+requires = ['rackspace_monitoring >= 0.1.0']
+
+if pre_python26:
+    requires.append('simplejson')
+
 setup(
     name='rackspace-monitoring-cli',
     version=read_version_string(),
     description='Command Line Utility for rackspace-monitoring library',
     author='Rackspace',
     author_email='cmbeta@rackspace.com',
-    install_requires=['rackspace_monitoring >= 0.1.0'],
+    install_requires=requires,
     scripts=scripts,
     packages=[
         'raxmon_cli',

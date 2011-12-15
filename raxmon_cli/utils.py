@@ -13,7 +13,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import ConfigParser
+try:
+    import ConfigParser
+except ImportError:
+    import configparser as ConfigParser
 
 from raxmon_cli.constants import CONFIG_PATH
 
@@ -67,17 +70,17 @@ def get_credentials():
     config.read(CONFIG_PATH)
 
     try:
-        username = config.get('credentials', 'username', None)
+        username = config.get('credentials', 'username')
     except ConfigParser.Error:
         username = None
 
     try:
-        api_key = config.get('credentials', 'api_key', None)
+        api_key = config.get('credentials', 'api_key')
     except ConfigParser.Error:
         api_key = None
 
     try:
-        api_url = config.get('api', 'url', None)
+        api_url = config.get('api', 'url')
     except ConfigParser.Error:
         api_url = None
 
