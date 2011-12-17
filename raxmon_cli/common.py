@@ -18,6 +18,8 @@ import traceback
 from pprint import pprint
 from optparse import OptionParser
 
+import optcomplete
+
 from rackspace_monitoring.providers import get_driver
 from rackspace_monitoring.types import Provider
 
@@ -65,6 +67,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     for args, kwargs in all_options:
         parser.add_option(*args, **kwargs)
 
+    optcomplete.autocomplete(parser)
     (options, args) = parser.parse_args()
 
     for option in required_options:

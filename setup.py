@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import with_statement
+
 import os
 import sys
 
@@ -55,6 +57,27 @@ class Pep8Command(Command):
                 (cwd)).split(' '))
         sys.exit(retcode)
 
+
+class GenerateCompletionsCommand(Command):
+    description = "Generate bash completions file for all the commands"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        path = pjoin(os.getcwd(), 'commands/')
+        files = os.listdir(path)
+        content = '\n'.join(['complete -F _optcomplete %s' % (f) for f in files])
+
+        with open('contrib/completions.sh', 'w') as fp:
+            fp.write(content)
+
+        print('Done')
+
 scripts = os.listdir(pjoin(os.getcwd(), 'commands/'))
 scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 
@@ -81,7 +104,8 @@ setup(
     license='Apache License (2.0)',
     url='tba',
     cmdclass={
-        'pep8': Pep8Command
+        'pep8': Pep8Command,
+        'gencompletions': GenerateCompletionsCommand
     },
     classifiers=[
         'Environment :: Console',

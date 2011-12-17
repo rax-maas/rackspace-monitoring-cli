@@ -49,6 +49,10 @@ find the names of the packages which include CA certificate files.
 * **ca_root_nss** on FreeBSD (ports)
 * **curl-ca-bundle** on Mac OS X (ports)
 
+## Using bash completion
+
+`source contrib/optcomplete.sh`
+
 ## Usage
 
 ### General
