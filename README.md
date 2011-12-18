@@ -90,7 +90,7 @@ Use a comma delimited string of key=value pairs. For example
 * `raxmon-notification-types-list [--details]`
 * `raxmon-alarm-changelogs-list [--details]`
 * `raxmon-audits-list [--details]`
-* `raxmon-list-limits [--details]`
+* `raxmon-limits-list [--details]`
 
 ### Create
 
