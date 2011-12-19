@@ -20,6 +20,6 @@ OPTIONS = None
 REQUIRED_OPTIONS = None
 
 def callback(driver, options, args, callback):
-    callback(driver.list_notifications())
+    callback(driver.list_notifications(ex_next_marker=options.marker))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'notifications', 'list', callback)

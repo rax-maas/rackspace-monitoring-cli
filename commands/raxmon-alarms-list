@@ -24,6 +24,6 @@ REQUIRED_OPTIONS = ['entity_id']
 
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
-    callback(driver.list_alarms(entity=en))
+    callback(driver.list_alarms(entity=en, ex_next_marker=options.marker))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'list', callback)

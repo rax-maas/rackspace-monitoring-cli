@@ -20,7 +20,7 @@ OPTIONS = None
 REQUIRED_OPTIONS = None
 
 def callback(driver, options, args, callback):
-    result = driver.ex_views_overview()
+    result = driver.ex_views_overview(ex_next_marker=options.marker)
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'views', 'overview', callback)

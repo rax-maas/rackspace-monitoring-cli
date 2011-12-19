@@ -36,6 +36,11 @@ API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL'}]
 DETAILS = [['--details'], {'dest': 'details', 'action': 'store_true',
                            'help': 'Display all the object attributes'}]
 
+MARKER = [['--marker'], {'dest': 'marker',
+                           'help': 'Marker. If provided only the entries' +
+                           ' with the key larger then and equal to the' +
+                           ' marker will be returned'}]
+
 GLOBAL_OPTIONS = [
     API_URL,
     USERNAME,
@@ -44,6 +49,13 @@ GLOBAL_OPTIONS = [
 
 ACTION_OPTIONS = {
     'list': [
-        DETAILS
+        DETAILS,
+        MARKER
+     ],
+
+    'overview': [
+        DETAILS,
+        MARKER
      ]
+
 }

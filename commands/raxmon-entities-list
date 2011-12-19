@@ -18,6 +18,6 @@
 from raxmon_cli.common import run_action
 
 def callback(driver, options, args, callback):
-    callback(driver.list_entities())
+    callback(driver.list_entities(ex_next_marker=options.marker))
 
 run_action(None, None, 'entities', 'list', callback)

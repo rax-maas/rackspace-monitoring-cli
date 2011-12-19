@@ -13,12 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from __future__ import absolute_import
+
 import sys
 import traceback
 from pprint import pprint
 from optparse import OptionParser
 
-import optcomplete
+from . import optcomplete
 
 from rackspace_monitoring.providers import get_driver
 from rackspace_monitoring.types import Provider
