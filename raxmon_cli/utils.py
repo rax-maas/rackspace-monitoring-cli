@@ -13,6 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 try:
     import ConfigParser
 except ImportError:
@@ -66,22 +68,30 @@ def instance_to_dict(instance, keys, include_none=False):
 
 
 def get_credentials():
+    username = os.getenv('USERNAME', None)
+    api_key = os.getenv('API_KEY', None)
+    api_url = os.getenv('API_URL', None)
+
     config = ConfigParser.ConfigParser()
     config.read(CONFIG_PATH)
 
-    try:
-        username = config.get('credentials', 'username')
-    except ConfigParser.Error:
-        username = None
+    if not username:
+      try:
+          username = config.get('credentials', 'username')
+      except ConfigParser.Error:
+          username = None
 
-    try:
-        api_key = config.get('credentials', 'api_key')
-    except ConfigParser.Error:
-        api_key = None
+    if not api_key:
+      try:
+          api_key = config.get('credentials', 'api_key')
+      except ConfigParser.Error:
+          api_key = None
 
-    try:
-        api_url = config.get('api', 'url')
-    except ConfigParser.Error:
-        api_url = None
+
+    if not api_url:
+      try:
+          api_url = config.get('api', 'url')
+      except ConfigParser.Error:
+          api_url = None
 
     return (username, api_key, api_url)
