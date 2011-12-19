@@ -219,7 +219,7 @@ def autocomplete(parser,
 
     # If we are not requested for complete, simply return silently, let the code
     # caller complete. This is the normal path of execution.
-    if not os.environ.has_key('OPTPARSE_AUTO_COMPLETE'):
+    if not 'OPTPARSE_AUTO_COMPLETE' in os.environ:
         return
 
     # Set default completers.
@@ -346,7 +346,7 @@ def autocomplete(parser,
         completions = filter(lambda x: x.startswith(prefix), completions)
 
     # Print result.
-    print ' '.join(completions)
+    print(' '.join(completions))
 
     # Print debug output (if needed).  You can keep a shell with 'tail -f' to
     # the log file to monitor what is happening.
@@ -437,15 +437,15 @@ class CmdComplete:
 
 
 def test():
-    print extract_word("extraire un mot d'une phrase", 11)
-    print extract_word("extraire un mot d'une phrase", 12)
-    print extract_word("extraire un mot d'une phrase", 13)
-    print extract_word("extraire un mot d'une phrase", 14)
-    print extract_word("extraire un mot d'une phrase", 0)
-    print extract_word("extraire un mot d'une phrase", 28)
-    print extract_word("extraire un mot d'une phrase", 29)
-    print extract_word("extraire un mot d'une phrase", -2)
-    print extract_word("optcomplete-test do", 19)
+    print(extract_word("extraire un mot d'une phrase", 11))
+    print(extract_word("extraire un mot d'une phrase", 12))
+    print(extract_word("extraire un mot d'une phrase", 13))
+    print(extract_word("extraire un mot d'une phrase", 14))
+    print(extract_word("extraire un mot d'une phrase", 0))
+    print(extract_word("extraire un mot d'une phrase", 28))
+    print(extract_word("extraire un mot d'une phrase", 29))
+    print(extract_word("extraire un mot d'une phrase", -2))
+    print(extract_word("optcomplete-test do", 19))
 
 if __name__ == '__main__':
     test()
