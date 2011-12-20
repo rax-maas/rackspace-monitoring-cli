@@ -29,7 +29,10 @@ def callback(driver, options, args, callback):
     options.details = str_to_dict(options.details)
     result = driver.create_notification(label=options.label,
                                         type=options.type,
-                                        details=options.details)
+                                        details=options.details,
+                                        who=options.who,
+                                        why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'notifications', 'create', callback)

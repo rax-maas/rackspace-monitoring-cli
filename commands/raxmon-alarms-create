@@ -30,7 +30,9 @@ def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
     result = driver.create_alarm(entity=en, check_type=options.check_type,
                                  check_id=options.check_id, criteria=options.criteria,
-                                 notification_plan_id=options.notification_plan_id)
+                                 notification_plan_id=options.notification_plan_id,
+                                 who=options.who,
+                                 why=options.why)
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'create', callback)

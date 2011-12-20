@@ -34,7 +34,10 @@ def callback(driver, options, args, callback):
     result = driver.create_notification_plan(label=options.label,
                                              critical_state=options.critical_state,
                                              warning_state=options.warning_state,
-                                             ok_state=options.ok_state)
+                                             ok_state=options.ok_state,
+                                             who=options.who,
+                                             why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'notification_plans', 'create', callback)

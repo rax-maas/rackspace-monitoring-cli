@@ -30,7 +30,10 @@ def callback(driver, options, args, callback):
     options.metadata = str_to_dict(options.metadata)
     result = driver.create_entity(label=options.label,
                                   ip_addresses=options.ip_addresses,
-                                  metadata=options.metadata)
+                                  metadata=options.metadata,
+                                  who=options.who,
+                                  why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'entities', 'create', callback)

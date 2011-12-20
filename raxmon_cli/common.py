@@ -97,6 +97,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     instance = get_instance(username, api_key, api_url)
 
+    if not getattr(options, 'who', None):
+        options.who = username
+
     try:
         callback(instance, options, args, done)
     except Exception:

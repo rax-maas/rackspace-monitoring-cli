@@ -24,7 +24,10 @@ REQUIRED_OPTIONS = ['id']
 
 def callback(driver, options, args, callback):
     no = driver.get_notification(notification_id=options.id)
-    status = driver.delete_notification(notification=no)
+    status = driver.delete_notification(notification=no,
+                                        who=options.who,
+                                        why=options.why)
+
     callback(status)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'notifications', 'delete', callback)

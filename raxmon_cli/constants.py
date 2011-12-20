@@ -41,6 +41,13 @@ MARKER = [['--marker'], {'dest': 'marker',
                            ' with the key larger then and equal to the' +
                            ' marker will be returned'}]
 
+WHO = [['--who'], {'dest': 'who',
+                           'help': 'Person who performed the action'}]
+WHY = [['--why'], {'dest': 'why',
+                           'help': 'Reason for this action which is stored in' +
+                           'the audit log'}]
+
+
 GLOBAL_OPTIONS = [
     API_URL,
     USERNAME,
@@ -52,6 +59,21 @@ ACTION_OPTIONS = {
         DETAILS,
         MARKER
      ],
+
+    'create': [
+      WHO,
+      WHY
+    ],
+
+    'update': [
+      WHO,
+      WHY
+    ],
+
+    'delete': [
+      WHO,
+      WHY
+    ],
 
     'overview': [
         DETAILS,

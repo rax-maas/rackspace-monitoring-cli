@@ -39,7 +39,10 @@ def callback(driver, options, args, callback):
             data[key] = value
 
     result = driver.update_entity(entity=en,
-                                  data=data)
+                                  data=data,
+                                  who=options.who,
+                                  why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'entities', 'update', callback)

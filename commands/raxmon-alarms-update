@@ -33,7 +33,10 @@ def callback(driver, options, args, callback):
     keys = ['check_type', 'check_id', 'criteria', 'notification_plan_id']
 
     data = instance_to_dict(options, keys, False)
-    result = driver.update_alarm(alarm=al, data=data)
+    result = driver.update_alarm(alarm=al, data=data,
+                                 who=options.who,
+                                 why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'update', callback)

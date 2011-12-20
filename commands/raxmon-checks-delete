@@ -25,7 +25,9 @@ REQUIRED_OPTIONS = ['entity_id', 'id']
 
 def callback(driver, options, args, callback):
     ch = driver.get_check(entity_id=options.entity_id, check_id=options.id)
-    status = driver.delete_check(check=ch)
+    status = driver.delete_check(check=ch,
+                                 who=options.who,
+                                 why=options.why)
     callback(status)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'delete', callback)

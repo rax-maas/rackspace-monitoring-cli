@@ -35,7 +35,10 @@ def callback(driver, options, args, callback):
     np = driver.get_notification_plan(notification_plan_id=options.id)
     keys = ['label', 'critical_state', 'warning_state', 'ok_state']
     data = instance_to_dict(options, keys, False)
-    result = driver.update_notification_plan(notification_plan=np, data=data)
+    result = driver.update_notification_plan(notification_plan=np, data=data,
+                                             who=options.who,
+                                             why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'notification_plans', 'update', callback)

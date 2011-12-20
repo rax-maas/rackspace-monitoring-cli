@@ -41,7 +41,10 @@ def callback(driver, options, args, callback):
                                  target_alias=options.target_alias,
                                  target_resolver=options.target_resolver,
                                  type=options.type,
-                                 details=options.details)
+                                 details=options.details,
+                                 who=options.who,
+                                 why=options.why)
+
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'create', callback)

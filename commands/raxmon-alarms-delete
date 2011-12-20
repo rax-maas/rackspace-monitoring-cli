@@ -25,7 +25,9 @@ REQUIRED_OPTIONS = ['entity_id', 'id']
 
 def callback(driver, options, args, callback):
     al = driver.get_alarm(entity_id=options.entity_id, alarm_id=options.id)
-    status = driver.delete_alarm(alarm=al)
+    status = driver.delete_alarm(alarm=al,
+                                 who=options.who,
+                                 why=options.why)
     callback(status)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'delete', callback)
