@@ -96,7 +96,7 @@ Use a comma delimited string of key=value pairs. For example
 
 * `raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>
                         --metadata=<foo=bar,bar=foo>`
-* `raxmon-checks-create --label=<label> --type=<check type>
+* `raxmon-checks-create --entity-id <parent entity id> --label=<label> --type=<check type>
                       --monitoring-zones=<monitoring zones>
                       --details=<details>
                       [--target-alias=<target alias>]
@@ -144,6 +144,18 @@ Use a comma delimited string of key=value pairs. For example
                       [--critical-state=<critical state notification object ids>]
                       [--warning-state=<warning state notification object ids>]
                       [--ok-state=<ok state notification object ids>]`
+
+### Test
+
+* `raxmon-checks-test --entity-id <parent entity id> --type=<check type>
+                      --monitoring-zones=<monitoring zones>
+                      --details=<details>
+                      [--target-alias=<target alias>]
+                      [--target-resolver=<target resolver>]
+                      [--timeout=<timeout>]
+                      [--period=<period>]`
+* `raxmon-alarms-test`
+
 
 ### Delete
 

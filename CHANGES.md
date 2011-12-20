@@ -1,3 +1,6 @@
+rackspace-monitoring-cli v0.2.1 - 2011-12-20:
+
+* Add `raxmon-checks-test` command
 rackspace-monitoring-cli v0.2.0 - 2011-12-19:
 
  * Add support for commands option bash auto-completion.
