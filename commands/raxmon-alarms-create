@@ -24,7 +24,7 @@ OPTIONS = [
     [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}]
 ]
 
-REQUIRED_OPTIONS = ['entity_id', 'criteria']
+REQUIRED_OPTIONS = ['entity_id']
 
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
