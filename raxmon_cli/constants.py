@@ -40,6 +40,11 @@ MARKER = [['--marker'], {'dest': 'marker',
                            'help': 'Marker. If provided only the entries' +
                            ' with the key larger then and equal to the' +
                            ' marker will be returned'}]
+DEBUG = [['--debug'], {'dest': 'debug',
+                       'action': 'store_true',
+                       'help': 'Enable debug mode - log all the requests' +
+                       ' and responses.'}]
+
 
 WHO = [['--who'], {'dest': 'who',
                            'help': 'Person who performed the action'}]
@@ -51,7 +56,8 @@ WHY = [['--why'], {'dest': 'why',
 GLOBAL_OPTIONS = [
     API_URL,
     USERNAME,
-    API_KEY
+    API_KEY,
+    DEBUG
 ]
 
 ACTION_OPTIONS = {

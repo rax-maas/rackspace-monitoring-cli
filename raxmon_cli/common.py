@@ -15,6 +15,7 @@
 
 from __future__ import absolute_import
 
+import os
 import sys
 import traceback
 from pprint import pprint
@@ -24,6 +25,8 @@ from . import optcomplete
 
 from rackspace_monitoring.providers import get_driver
 from rackspace_monitoring.types import Provider
+
+from libcloud import _init_once
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
 from raxmon_cli.constants import API_URL_ADDRESS
@@ -94,6 +97,10 @@ def run_action(cmd_options, required_options, resource, action, callback):
         print('You need to either put credentials in ~/.raxrc or ' +
               'pass them to the command using --username and --api-key option')
         sys.exit(1)
+
+    if options.debug:
+        os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
+        _init_once()
 
     instance = get_instance(username, api_key, api_url)
 
