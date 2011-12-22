@@ -25,6 +25,7 @@ OPTIONS = [
     [['--period'], {'dest': 'period', 'help': 'Check period'}],
     [['--monitoring-zones'], {'dest': 'monitoring_zones', 'help': 'A list of monitoring zones'}],
     [['--target-alias'], {'dest': 'target_alias', 'help': 'Target alias'}],
+    [['--target-hostname'], {'dest': 'target_hostname', 'help': 'Target hostname'}],
     [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}]
 ]
 
@@ -38,6 +39,8 @@ def callback(driver, options, args, callback):
                                period=options.period, entity=en,
                                monitoring_zones=options.monitoring_zones,
                                target_alias=options.target_alias,
+                               target_hostname=options.target_hostname,
+                               target_resolver=options.target_resolver,
                                type=options.type,
                                details=options.details)
     callback(result)

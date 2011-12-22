@@ -1,5 +1,7 @@
-rackspace-monitoring-cli v0.2.1 - 2011-12-20:
+rackspace-monitoring-cli v0.2.1 - 2011-12-22:
 
+* Add missing `target-hostname` option to the checks create, update and test
+  command.
 * Add `raxmon-checks-test` command
 * Add global `--why` and `--who` option to all the create, update and delete
   commands. If `--who` is not provided it defaults to the current user username.
