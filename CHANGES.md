@@ -1,8 +1,9 @@
-rackspace-monitoring-cli v0.2.2 - in development:
+rackspace-monitoring-cli v0.2.2 - 2011-12-25:
 
 * Add `--json` option to the `raxmon-checks-test` command. This way response
   can be directly piped to a file and used with `raxmon-alarms-test` command.
 * Add `raxmon-alarms-test` command
+* Change `rackspace-monitoring` dependency version to 0.2.1
 
 rackspace-monitoring-cli v0.2.1 - 2011-12-22:
 
