@@ -1,3 +1,9 @@
+rackspace-monitoring-cli v0.2.2 - in development:
+
+* Add `--json` option to the `raxmon-checks-test` command. This way response
+  can be directly piped to a file and used with `raxmon-alarms-test` command.
+* Add `raxmon-alarms-test` command
+
 rackspace-monitoring-cli v0.2.1 - 2011-12-22:
 
 * Add missing `target-hostname` option to the checks create, update and test
