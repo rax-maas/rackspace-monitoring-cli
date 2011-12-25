@@ -26,7 +26,8 @@ __all___ = [
     'str_to_list',
     'str_to_dict',
     'instance_to_dict',
-    'get_credentials'
+    'get_credentials',
+    'read_json_from_file'
 ]
 
 
@@ -95,3 +96,10 @@ def get_credentials():
           api_url = None
 
     return (username, api_key, api_url)
+
+
+def read_json_from_file(file_path):
+    with open(file_path, 'r') as fp:
+        content = fp.read()
+
+    return content
