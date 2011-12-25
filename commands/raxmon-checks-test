@@ -14,6 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+try:
+    import simplejson as json
+except ImportError:
+    import json
+
 from raxmon_cli.common import run_action
 from raxmon_cli.utils import str_to_dict, str_to_list
 
@@ -26,7 +31,8 @@ OPTIONS = [
     [['--monitoring-zones'], {'dest': 'monitoring_zones', 'help': 'A list of monitoring zones'}],
     [['--target-alias'], {'dest': 'target_alias', 'help': 'Target alias'}],
     [['--target-hostname'], {'dest': 'target_hostname', 'help': 'Target hostname'}],
-    [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}]
+    [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}],
+    [['--json'], {'dest': 'json', 'action': 'store_true', 'help': 'Convert response to JSON'}]
 ]
 
 REQUIRED_OPTIONS = ['entity_id', 'type', 'monitoring_zones']
@@ -43,6 +49,10 @@ def callback(driver, options, args, callback):
                                target_resolver=options.target_resolver,
                                type=options.type,
                                details=options.details)
-    callback(result)
+
+    if options.json:
+        result = json.dumps(result)
+
+    print(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'cteate', callback)
