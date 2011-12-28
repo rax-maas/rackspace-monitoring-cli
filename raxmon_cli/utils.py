@@ -71,9 +71,9 @@ def instance_to_dict(instance, keys, include_none=False):
 
 
 def get_credentials():
-    username = os.getenv('USERNAME', None)
-    api_key = os.getenv('API_KEY', None)
-    api_url = os.getenv('API_URL', None)
+    username = os.getenv('RAXMON_USERNAME', None)
+    api_key = os.getenv('RAXMON_API_KEY', None)
+    api_url = os.getenv('RAXMON_API_URL', None)
 
     config = ConfigParser.ConfigParser()
     config.read(CONFIG_PATH)
