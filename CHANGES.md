@@ -1,3 +1,11 @@
+rackspace-monitoring-cli v0.2.3 - 2012-01-03:
+
+* Add `RAXMON_` prefix to the environment variables so they don't conflict with
+  other environment variables.
+  [Pedro Padron]
+
+* Add `raxmon-checks-disable` and `raxmon-checks-enable` command.
+
 rackspace-monitoring-cli v0.2.2 - 2011-12-25:
 
 * Add `--json` option to the `raxmon-checks-test` command. This way response
