@@ -169,8 +169,8 @@ Use a comma delimited string of key=value pairs. For example
 ### Other
 
 * `raxmon-views-overview`
-* `raxmon-checks-disable --entity-id=<entity id> --id=<check id>
-* `raxmon-checks-enable --entity-id=<entity id> --id=<check id>
+* `raxmon-checks-disable --entity-id=<entity id> --id=<check id>`
+* `raxmon-checks-enable --entity-id=<entity id> --id=<check id>`
 
 # Issues, Feedback
 
