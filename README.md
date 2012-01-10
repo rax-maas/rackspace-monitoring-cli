@@ -23,9 +23,6 @@ manually to each command.
 ### Example configuration file
 
 ```
-[api]
-url=http://www.test.com/v1.0
-
 [credentials]
 username=foo
 api_key=bar
