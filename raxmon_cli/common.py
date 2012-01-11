@@ -16,6 +16,7 @@
 from __future__ import absolute_import
 
 import os
+import os.path
 import sys
 import traceback
 from pprint import pprint
@@ -26,7 +27,12 @@ from . import optcomplete
 from rackspace_monitoring.providers import get_driver
 from rackspace_monitoring.types import Provider
 
+import libcloud.security
 from libcloud import _init_once
+
+CA_CERT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)),
+                       'data/cacert.pem')
+libcloud.security.CA_CERTS_PATH.insert(0, CA_CERT_PATH)
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
 from raxmon_cli.constants import API_URL_ADDRESS
