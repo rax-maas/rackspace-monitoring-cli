@@ -1,4 +1,11 @@
+rackspace-monitoring-cli v0.2.4 - 2012-01-11:
+
+* Bundle CA certificates file with the distribution.
+
 rackspace-monitoring-cli v0.2.3 - 2012-01-03:
+
+* Add `RAXMON_` prefix to the environment variables so they don't conflict with
+ rackspace-monitoring-cli v0.2.3 - 2012-01-03:
 
 * Add `RAXMON_` prefix to the environment variables so they don't conflict with
   other environment variables.
