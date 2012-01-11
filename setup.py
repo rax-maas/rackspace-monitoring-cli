@@ -101,6 +101,9 @@ setup(
     package_dir={
         'raxmon_cli': 'raxmon_cli',
     },
+    package_data={
+        'raxmon_cli': ['data/cacert.pem'],
+    },
     license='Apache License (2.0)',
     url='tba',
     cmdclass={
