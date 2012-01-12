@@ -28,25 +28,6 @@ username=foo
 api_key=bar
 ```
 
-# Certificate verification
-
-Libcloud verifies server SSL certificate by default. This means you need to
-have the correct CA certificate files installed on your computer for this
-library to work.
-
-If Libcloud cannot find CA ertificate files, you will see an error similar to
-the one bellow:
-
-`"RuntimeError: No CA Certificates were found in CA_CERTS_PATH."`
-
-This can be addresses by installing the CA certificate files. Bellow you can
-find the names of the packages which include CA certificate files.
-
-* **openssl** on CentOS/Fedora (yum)
-* **ca-certificates** on Debian/Ubuntu/Arch/Gentoo (apt-get)
-* **ca_root_nss** on FreeBSD (ports)
-* **curl-ca-bundle** on Mac OS X (ports)
-
 ## Using bash completion
 
 `source contrib/optcomplete.sh`
