@@ -18,7 +18,7 @@
 from raxmon_cli.common import run_action
 from raxmon_cli.parser import Parser
 from raxmon_cli.waxeye import ParseError
-from sys import exit, stdin
+from sys import exit, stdin, exc_info
 
 OPTIONS = [
     [['--file'], {'dest': 'file', 'help': 'filename or - for stdin'}],
@@ -27,16 +27,20 @@ OPTIONS = [
 REQUIRED_OPTIONS = ['file']
 
 def callback(driver, options, args, callback):
+    fp = None
     try:
         if options.file == '-':
-            f = stdin
+            fp = stdin
         else:
-            f = open(options.file, 'r')
-        data = f.read()
-        f.close()
-    except Exception as e:
+            fp = open(options.file, 'r')
+        data = fp.read()
+    except Exception:
+        e = exc_info()[1]
         callback(str(e))
         exit(1)
+    finally:
+        if fp:
+            fp.close()
 
     rv = Parser().parse(data)
     if isinstance(rv, ParseError):
