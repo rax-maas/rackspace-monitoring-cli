@@ -1,4 +1,4 @@
-in development:
+rackspace-monitoring-cli v0.2.5 - 2012-02-24:
 
 * Add a `raxmon` command which lists all the available commands
 * Add `raxmon-notification-types-list` command
