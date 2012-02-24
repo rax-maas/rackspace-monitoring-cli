@@ -65,6 +65,7 @@ Use a comma delimited string of key=value pairs. For example
 * `raxmon-checks-list --entity-id=<enId> [--details]`
 * `raxmon-alarms-list --entity-id=<enId> [--details]`
 * `raxmon-check-types-list [--details]`
+* `raxmon-notification-types-list`
 * `raxmon-notifications-list [--details]`
 * `raxmon-notification-types-list [--details]`
 * `raxmon-alarm-changelogs-list [--details]`

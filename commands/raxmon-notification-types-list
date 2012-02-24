@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -16,37 +15,13 @@
 # limitations under the License.
 
 from raxmon_cli.common import run_action
-from raxmon_cli.parser import Parser
-from raxmon_cli.waxeye import ParseError
-from sys import exit, stdin, exc_info
 
-OPTIONS = [
-    [['--file'], {'dest': 'file', 'help': 'filename or - for stdin'}],
-]
+OPTIONS = []
 
-REQUIRED_OPTIONS = ['file']
+REQUIRED_OPTIONS = []
 
 def callback(driver, options, args, callback):
-    fp = None
-    try:
-        if options.file == '-':
-            fp = stdin
-        else:
-            fp = open(options.file, 'r')
-        data = fp.read()
-    except Exception:
-        e = exc_info()[1]
-        callback(str(e))
-        exit(1)
-    finally:
-        if fp:
-            fp.close()
+    result = driver.list_notification_types()
+    callback(result)
 
-    rv = Parser().parse(data)
-    if isinstance(rv, ParseError):
-        callback(str(rv))
-        exit(1)
-    else:
-        callback('Success')
-
-run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'validate', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'notification_types', 'list', callback)

@@ -1,6 +1,7 @@
 in development:
 
 * Add a `raxmon` command which lists all the available commands
+* Add `raxmon-notification-types-list` command
 
 rackspace-monitoring-cli v0.2.4 - 2012-01-11:
 
