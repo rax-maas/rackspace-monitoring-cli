@@ -6,8 +6,8 @@ Command line utility for rackspace-monitoring library.
 
 Utility can be installed using `pip`:
 
-```bash
-sudo pip install rackspace-monitoring-cli
+```
+$ sudo pip install rackspace-monitoring-cli
 ```
 
 Note: If you don't use a virtual environment the library needs to be installed
@@ -73,34 +73,45 @@ Use a comma delimited string of key=value pairs. For example
 * `raxmon-limits-list [--details]`
 
 ### Create
-
-* `raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>
-                        --metadata=<foo=bar,bar=foo>`
-* `raxmon-checks-create --entity-id <parent entity id> --label=<label> --type=<check type>
+```
+* raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>
+                        --metadata=<foo=bar,bar=foo>
+```
+```
+* raxmon-checks-create --entity-id <parent entity id> --label=<label> --type=<check type>
                       --monitoring-zones=<monitoring zones>
                       --details=<details>
                       [--target-alias=<target alias>]
                       [--target-resolver=<target resolver>]
                       [--timeout=<timeout>]
-                      [--period=<period>]`
-* `raxmon-alarms-create --entity-id=<entity id>
+                      [--period=<period>]
+```
+```
+* raxmon-alarms-create --entity-id=<entity id>
                       --criteria=<criteria>
                       --notification-plan-id=<notification plan id>
                       [--check-type=<check type>]
-                      [--check-id=<check id>]`
-* `raxmon-notifications-create --label
+                      [--check-id=<check id>]
+```
+```
+* raxmon-notifications-create --label
                       --type=<type>
-                      --details=<details>`
-* `raxmon-notification-plans-create --label=<label>
+                      --details=<details>
+```
+```
+* raxmon-notification-plans-create --label=<label>
                       [--critical-state=<critical state notification object ids>]
                       [--warning-state=<warning state notification object ids>]
-                      [--ok-state=<ok state notification object ids>]`
+                      [--ok-state=<ok state notification object ids>]
+```
 
 ### Update
-
-* `raxmon-entities-update --id=<entity id> [--label=<label>]
+```
+* raxmon-entities-update --id=<entity id> [--label=<label>]
                         [--ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>]
-                        [--metadata=<foo=bar,bar=foo>]`
+                        [--metadata=<foo=bar,bar=foo>]
+```
+```
 * `raxmon-checks-update --entity-id=<entity id> --id=<check id>
                       [--label=<label>] [--type=<check type>]
                       [--monitoring-zones=<monitoring zones>]
@@ -108,33 +119,44 @@ Use a comma delimited string of key=value pairs. For example
                       [--target-alias=<target alias>]
                       [--target-resolver=<target resolver>]
                       [--timeout=<timeout>]
-                      [--period=<period>]`
-* `raxmon-alarms-update --entity-id=<entity id>
+                      [--period=<period>]
+```
+```
+* raxmon-alarms-update --entity-id=<entity id>
                       --id=<alarm id>\
                       [--criteria=<criteria>]
                       [--notification-plan-id=<notification plan id>]
                       [--check-type=<check type>]
-                      [--check-id=<check id>]`
-* `raxmon-notifications-update --id=<notification id>
+                      [--check-id=<check id>]
+```
+```
+* raxmon-notifications-update --id=<notification id>
                       [--label=<label>]
                       [--type=<type>]
-                      [--details=<details>]`
-* `raxmon-notification-plans-update --id=<notification plan id>
+                      [--details=<details>]
+```
+```
+* raxmon-notification-plans-update --id=<notification plan id>
                       [--label=<label>]
                       [--critical-state=<critical state notification object ids>]
                       [--warning-state=<warning state notification object ids>]
-                      [--ok-state=<ok state notification object ids>]`
+                      [--ok-state=<ok state notification object ids>]
+```
 
 ### Test
-
-* `raxmon-checks-test --entity-id <parent entity id> --type=<check type>
+```
+* raxmon-checks-test --entity-id <parent entity id> --type=<check type>
                       --monitoring-zones=<monitoring zones>
                       --details=<details>
                       [--target-alias=<target alias>]
                       [--target-resolver=<target resolver>]
                       [--timeout=<timeout>]
-                      [--period=<period>]`
-* `raxmon-alarms-test`
+                      [--period=<period>]
+```
+
+```
+* raxmon-alarms-test
+```
 
 
 ### Delete
