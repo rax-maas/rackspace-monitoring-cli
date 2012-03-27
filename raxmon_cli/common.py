@@ -111,7 +111,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.no_ssl_verify:
         libcloud.security.VERIFY_SSL_CERT = False
 
-    instance = get_instance(username, api_key, api_url)
+    instance = get_instance(username, api_key, api_url, options.auth_url)
 
     if not getattr(options, 'who', None):
         options.who = username
@@ -122,7 +122,12 @@ def run_action(cmd_options, required_options, resource, action, callback):
         traceback.print_exc(file=sys.stderr)
 
 
-def get_instance(username, api_key, url):
+def get_instance(username, api_key, url, auth_url=None):
     driver = get_driver(Provider.RACKSPACE)
-    instance = driver(username, api_key, ex_force_base_url=url)
+
+    kwargs = {}
+    kwargs['ex_force_base_url'] = url
+    kwargs['ex_force_auth_url'] = auth_url
+    instance = driver(username, api_key, **kwargs)
+
     return instance
