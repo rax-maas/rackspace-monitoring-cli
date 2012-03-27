@@ -108,6 +108,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
         os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
         _init_once()
 
+    if options.no_ssl_verify:
+        libcloud.security.VERIFY_SSL_CERT = False
+
     instance = get_instance(username, api_key, api_url)
 
     if not getattr(options, 'who', None):

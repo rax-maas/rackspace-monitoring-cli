@@ -44,6 +44,9 @@ DEBUG = [['--debug'], {'dest': 'debug',
                        'action': 'store_true',
                        'help': 'Enable debug mode - log all the requests' +
                        ' and responses.'}]
+NO_SSL_VERIFY = [['--no-ssl-verify'], {'dest': 'no_ssl_verify',
+                                       'action': 'store_true',
+                                       'help': 'Don\'t verify the SSL certificate.'}]
 
 
 WHO = [['--who'], {'dest': 'who',
@@ -57,7 +60,8 @@ GLOBAL_OPTIONS = [
     API_URL,
     USERNAME,
     API_KEY,
-    DEBUG
+    DEBUG,
+    NO_SSL_VERIFY
 ]
 
 ACTION_OPTIONS = {
