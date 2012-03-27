@@ -36,7 +36,7 @@ api_key=bar
 
 ### General
 
-`command [--username=<username>] [--api-key=<api key>] [..options..]`
+`command [--username=<username>] [--api-key=<api key>] [--api-url=<api url>][..options..]`
 
 ## View available options
 
@@ -175,4 +175,4 @@ Use a comma delimited string of key=value pairs. For example
 
 # Issues, Feedback
 
-Please use Github issue tracker or send an email to `cmbeta@rackspace.com`.
+Please use Github issue tracker or send an email to `monitoring@rackspace.com`.
