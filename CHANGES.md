@@ -1,3 +1,10 @@
+rackspace-monitoring-cli v0.3.0 - 2012-03-27:
+
+* Update the API URL to be https://monitoring.api.rackspacecloud.com
+* Allow user to pass `--no-ssl-verify` option to all the commands.
+  When this option is used, SSL certificates aren't verified.
+* Allow user to specify a custom auth url using `--auth-url` option
+
 rackspace-monitoring-cli v0.2.5 - 2012-02-24:
 
 * Add a `raxmon` command which lists all the available commands
