@@ -1,3 +1,10 @@
+rackspace-monitoring-cli v0.3.1 - 2012-03-28:
+
+* Add missing `--label` option to raxmon-alarms-create command
+* Add new commands for testing notifications:
+  * `raxmon-notifications-test`
+  * `raxmon-notifications-test-existing`
+
 rackspace-monitoring-cli v0.3.0 - 2012-03-27:
 
 * Update the API URL to be https://monitoring.api.rackspacecloud.com
