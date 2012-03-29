@@ -6,6 +6,7 @@ complete -F _optcomplete raxmon-checks-enable
 complete -F _optcomplete raxmon-audits-list
 complete -F _optcomplete raxmon-notifications-delete
 complete -F _optcomplete raxmon-notifications-list
+complete -F _optcomplete raxmon-alarms-validate-criteria
 complete -F _optcomplete raxmon-notification-plans-create
 complete -F _optcomplete raxmon-entities-list
 complete -F _optcomplete raxmon-notifications-update
@@ -21,6 +22,9 @@ complete -F _optcomplete raxmon-checks-create
 complete -F _optcomplete raxmon-checks-disable
 complete -F _optcomplete raxmon-notification-plans-delete
 complete -F _optcomplete raxmon-checks-test
+complete -F _optcomplete raxmon-notifications-test-existing
+complete -F _optcomplete raxmon-notifications-test
+complete -F _optcomplete raxmon-notification-types-list
 complete -F _optcomplete raxmon-alarms-update
 complete -F _optcomplete raxmon-entities-update
 complete -F _optcomplete raxmon-checks-list
@@ -28,3 +32,4 @@ complete -F _optcomplete raxmon-alarm-changelog-list
 complete -F _optcomplete raxmon-alarms-list
 complete -F _optcomplete raxmon-checks-delete
 complete -F _optcomplete raxmon-alarms-create
+complete -F _optcomplete raxmon
