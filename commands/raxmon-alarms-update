@@ -20,6 +20,7 @@ from raxmon_cli.utils import instance_to_dict
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
     [['--id'], {'dest': 'id', 'help': 'Alarm ID'}],
+    [['--label'], {'dest': 'label', 'help': 'Alarm label'}],
     [['--check-type'], {'dest': 'check_type', 'help': 'Check type'}],
     [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
     [['--criteria'], {'dest': 'criteria', 'help': 'Alarm criteria'}],
