@@ -82,7 +82,7 @@ scripts = os.listdir(pjoin(os.getcwd(), 'commands/'))
 scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 
 pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
-requires = ['rackspace_monitoring >= 0.2.4']
+requires = ['rackspace_monitoring >= 0.2.5']
 
 if pre_python26:
     requires.append('simplejson')
