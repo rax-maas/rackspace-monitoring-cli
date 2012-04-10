@@ -1,3 +1,7 @@
+rackspace-monitoring-cli in deveploment:
+
+* Add new `raxmon-checks-test-existing` command.
+
 rackspace-monitoring-cli v0.3.1 - 2012-03-29:
 
 * Add missing `--label` option to raxmon-alarms-create command
