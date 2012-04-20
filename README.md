@@ -74,7 +74,7 @@ Use a comma delimited string of key=value pairs. For example
 
 ### Create
 ```
-* raxmon-entities-create --label=<label> --ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>
+* raxmon-entities-create --label=<label> --ip-addresses=<ip1=127.0.0.1,ip2=127.0.0.2>
                         --metadata=<foo=bar,bar=foo>
 ```
 ```
