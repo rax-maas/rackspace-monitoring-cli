@@ -108,7 +108,7 @@ Use a comma delimited string of key=value pairs. For example
 ### Update
 ```
 * raxmon-entities-update --id=<entity id> [--label=<label>]
-                        [--ip_address=<ip1=127.0.0.1,ip2=127.0.0.2>]
+                        [--ip-addresses=<ip1=127.0.0.1,ip2=127.0.0.2>]
                         [--metadata=<foo=bar,bar=foo>]
 ```
 ```
