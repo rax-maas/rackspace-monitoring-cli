@@ -1,6 +1,8 @@
 rackspace-monitoring-cli in deveploment:
 
 * Add new `raxmon-checks-test-existing` command.
+* Print help if user doesn't pass enough arguments to the command.
+  [Ryan Phillips]
 
 rackspace-monitoring-cli v0.3.1 - 2012-03-29:
 
