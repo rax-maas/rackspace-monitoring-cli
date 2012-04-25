@@ -83,7 +83,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     for option in required_options:
         if not getattr(options, option, None):
-            raise Exception('Missing required option: ' + option)
+            parser.print_help()
+            print('\nMissing required options: ' + option)
+            sys.exit(1)
 
     username, api_key, api_url = get_credentials()
 
