@@ -17,8 +17,8 @@ files are installed.
 ## Settings Credentials
 
 Credentials can be set (in order of precedence) as environment variables (RAXMON_USERNAME,
-RAXMON_API_KEY, RAXMON_API_URL), in a configuration file (~/.raxrc) or you can pass them
-manually to each command.
+RAXMON_API_KEY, RAXMON_API_URL, RAXMON_AUTH_URL), in a configuration file (~/.raxrc) or 
+you can pass them manually to each command.
 
 ### Example configuration file
 
@@ -26,6 +26,12 @@ manually to each command.
 [credentials]
 username=foo
 api_key=bar
+
+[api]
+url=https://monitoring.api.rackspacecloud.com/v1.0
+
+[auth_api]
+url=https://identity.api.rackspacecloud.com/v2.0
 ```
 
 ## Using bash completion
