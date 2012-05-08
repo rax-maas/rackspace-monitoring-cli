@@ -1,3 +1,9 @@
 [credentials]
 username=foo
 api_key=bar
+
+[auth_api]
+url=https://identity.api.rackspacecloud.com/v2.0
+
+[api]
+url=https://monitoring.api.rackspacecloud.com/v1.0
