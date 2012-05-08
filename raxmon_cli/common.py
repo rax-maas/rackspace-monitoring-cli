@@ -87,7 +87,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
             print('\nMissing required options: ' + option)
             sys.exit(1)
 
-    username, api_key, api_url = get_credentials()
+    result = get_credentials()
+    username, api_key = result['username'], result['api_key']
+    api_url, auth_url = result['api_url'], result['auth_url']
 
     if options.username:
         username = options.username
@@ -99,6 +101,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     if options.api_url:
         api_url = options.api_url
+
+    if options.auth_url:
+        auth_url = options.auth_url
 
     if not username or not api_key:
         print('No username and API key provided!')
@@ -113,7 +118,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.no_ssl_verify:
         libcloud.security.VERIFY_SSL_CERT = False
 
-    instance = get_instance(username, api_key, api_url, options.auth_url)
+    instance = get_instance(username, api_key, api_url, auth_url)
 
     if not getattr(options, 'who', None):
         options.who = username

@@ -71,9 +71,12 @@ def instance_to_dict(instance, keys, include_none=False):
 
 
 def get_credentials():
+    result = {}
+
     username = os.getenv('RAXMON_USERNAME', None)
     api_key = os.getenv('RAXMON_API_KEY', None)
     api_url = os.getenv('RAXMON_API_URL', None)
+    auth_url = os.getenv('RAXMON_AUTH_URL', None)
 
     config = ConfigParser.ConfigParser()
     config.read(CONFIG_PATH)
@@ -90,14 +93,21 @@ def get_credentials():
       except ConfigParser.Error:
           api_key = None
 
-
     if not api_url:
       try:
           api_url = config.get('api', 'url')
       except ConfigParser.Error:
           api_url = None
 
-    return (username, api_key, api_url)
+    if not auth_url:
+      try:
+          auth_url = config.get('auth_api', 'url')
+      except ConfigParser.Error:
+          auth_url = None
+
+    result = {'username': username, 'api_key': api_key, 'api_url': api_url,
+              'auth_url': auth_url}
+    return result
 
 
 def read_json_from_file(file_path):
