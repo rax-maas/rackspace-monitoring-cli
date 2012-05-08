@@ -71,42 +71,33 @@ def instance_to_dict(instance, keys, include_none=False):
 
 
 def get_credentials():
+    keys = [['credentials', 'username', 'username'],
+            ['credentials', 'api_key', 'api_key'],
+            ['api', 'url', 'api_url'],
+            ['auth_api', 'url', 'auth_url']]
+
     result = {}
 
-    username = os.getenv('RAXMON_USERNAME', None)
-    api_key = os.getenv('RAXMON_API_KEY', None)
-    api_url = os.getenv('RAXMON_API_URL', None)
-    auth_url = os.getenv('RAXMON_AUTH_URL', None)
+    result['username'] = os.getenv('RAXMON_USERNAME', None)
+    result['api_key'] = os.getenv('RAXMON_API_KEY', None)
+    result['api_url'] = os.getenv('RAXMON_API_URL', None)
+    result['auth_url'] = os.getenv('RAXMON_AUTH_URL', None)
 
     config = ConfigParser.ConfigParser()
     config.read(CONFIG_PATH)
 
-    if not username:
-      try:
-          username = config.get('credentials', 'username')
-      except ConfigParser.Error:
-          username = None
+    for (config_section, config_key, key) in keys:
+        if result[key]:
+            # Already specified as an env variable
+            continue
 
-    if not api_key:
-      try:
-          api_key = config.get('credentials', 'api_key')
-      except ConfigParser.Error:
-          api_key = None
+        try:
+            value = config.get(config_section, config_key)
+        except ConfigParser.Error:
+            continue
 
-    if not api_url:
-      try:
-          api_url = config.get('api', 'url')
-      except ConfigParser.Error:
-          api_url = None
+        result[key] = value
 
-    if not auth_url:
-      try:
-          auth_url = config.get('auth_api', 'url')
-      except ConfigParser.Error:
-          auth_url = None
-
-    result = {'username': username, 'api_key': api_key, 'api_url': api_url,
-              'auth_url': auth_url}
     return result
 
 
