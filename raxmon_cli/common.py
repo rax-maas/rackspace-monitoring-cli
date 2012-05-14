@@ -46,7 +46,7 @@ __all__ = [
 
 
 def get_parser():
-    usage = 'usage: %prog --config=<path to the config file>'
+    usage = 'usage: %prog [options]'
     parser = OptionParser(usage=usage)
     return parser
 
