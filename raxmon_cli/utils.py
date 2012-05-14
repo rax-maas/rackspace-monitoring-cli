@@ -84,7 +84,7 @@ def get_credentials():
     result['auth_url'] = os.getenv('RAXMON_AUTH_URL', None)
 
     config = ConfigParser.ConfigParser()
-    config.read(CONFIG_PATH)
+    config.read(os.getenv('RAXMON_RAXRC') or CONFIG_PATH)
 
     for (config_section, config_key, key) in keys:
         if result[key]:
