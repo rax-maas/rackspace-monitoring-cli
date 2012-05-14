@@ -17,8 +17,13 @@ files are installed.
 ## Settings Credentials
 
 Credentials can be set (in order of precedence) as environment variables (RAXMON_USERNAME,
-RAXMON_API_KEY, RAXMON_API_URL, RAXMON_AUTH_URL), in a configuration file (~/.raxrc) or 
-you can pass them manually to each command.
+RAXMON_API_KEY, RAXMON_API_URL, RAXMON_AUTH_URL), in a configuration file or you can pass 
+them manually to each command.
+
+Default configuration file path is `~/.raxrc` but you can overrride it by
+setting the `RAXMON_RAXRC` environment variable. For example:
+
+`RAXMON_RAXRC=~/.raxrc.uk raxmon-entities-list`
 
 ### Example configuration file
 
@@ -42,7 +47,7 @@ url=https://identity.api.rackspacecloud.com/v2.0
 
 ### General
 
-`command [--username=<username>] [--api-key=<api key>] [--api-url=<api url>][..options..]`
+`command [--username=<username>] [--api-key=<api key>] [--api-url=<api url>] [..options..]`
 
 ## View available options
 
