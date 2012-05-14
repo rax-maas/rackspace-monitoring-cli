@@ -90,9 +90,9 @@ if pre_python26:
 setup(
     name='rackspace-monitoring-cli',
     version=read_version_string(),
-    description='Command Line Utility for rackspace-monitoring library',
-    author='Rackspace',
-    author_email='cmbeta@rackspace.com',
+    description='Command Line Utility for Rackspace Cloud Monitoring (MaaS)',
+    author='Rackspace, Inc.',
+    author_email='monitoring@rackspace.com',
     install_requires=requires,
     scripts=scripts,
     packages=[
