@@ -1,6 +1,6 @@
 # Rackspace Monitoring CLI
 
-Command line utility for rackspace-monitoring library.
+Command line utility for [Rackspace Cloud Monitoring](https://monitoring.api.rackspacecloud.com/).
 
 ## Installation
 
