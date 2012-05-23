@@ -2,6 +2,7 @@ rackspace-monitoring-cli in deveploment:
 
 * Add new `raxmon-checks-test-existing` command.
 * Add new `raxmon-alarms-notification-history-list` command.
+* Add new `raxmon-alarms-notification-history-list-checks` command.
 * Print help if user doesn't pass enough arguments to the command.
   [Ryan Phillips]
 
