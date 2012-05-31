@@ -21,7 +21,8 @@ OPTIONS = [
     [['--id'], {'dest': 'id', 'help': 'Entity id'}],
     [['--label'], {'dest': 'label', 'help': 'Entity label'}],
     [['--ip-addresses'], {'dest': 'ip_addresses', 'help': 'Entity IP addresses'}],
-    [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}]
+    [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}],
+    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID'}]
 ]
 
 REQUIRED_OPTIONS = ['id']
@@ -30,7 +31,7 @@ def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.id)
     data = {}
 
-    for key in ['label', 'ip_addresses', 'metadata']:
+    for key in ['label', 'ip_addresses', 'metadata', 'agent_id']:
         value = getattr(options, key, None)
         if value is not None:
             if key in ['ip_addresses', 'metadata']:

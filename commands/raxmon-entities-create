@@ -20,7 +20,8 @@ from raxmon_cli.utils import str_to_dict
 OPTIONS = [
     [['--label'], {'dest': 'label', 'help': 'Entity label'}],
     [['--ip-addresses'], {'dest': 'ip_addresses', 'help': 'Entity IP addresses'}],
-    [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}]
+    [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}],
+    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID'}]
 ]
 
 REQUIRED_OPTIONS = ['label']
@@ -30,6 +31,7 @@ def callback(driver, options, args, callback):
     options.metadata = str_to_dict(options.metadata)
     result = driver.create_entity(label=options.label,
                                   ip_addresses=options.ip_addresses,
+                                  agent_id=options.agent_id,
                                   metadata=options.metadata,
                                   who=options.who,
                                   why=options.why)
