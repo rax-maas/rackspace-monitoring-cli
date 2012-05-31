@@ -14,6 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import optparse
+
 from raxmon_cli.common import run_action
 from raxmon_cli.utils import str_to_dict
 
@@ -21,7 +23,7 @@ OPTIONS = [
     [['--label'], {'dest': 'label', 'help': 'Entity label'}],
     [['--ip-addresses'], {'dest': 'ip_addresses', 'help': 'Entity IP addresses'}],
     [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}],
-    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID'}]
+    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID', 'help': optparse.SUPPRESS_HELP}]
 ]
 
 REQUIRED_OPTIONS = ['label']
