@@ -37,7 +37,7 @@ libcloud.security.CA_CERTS_PATH.insert(0, CA_CERT_PATH)
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
 from raxmon_cli.constants import API_URL_ADDRESS
 from raxmon_cli.printers import print_list, print_error, print_success
-from raxmon_cli.utils import get_credentials
+from raxmon_cli.utils import get_config
 
 __all__ = [
     'run_action',
@@ -87,9 +87,10 @@ def run_action(cmd_options, required_options, resource, action, callback):
             print('\nMissing required options: ' + option)
             sys.exit(1)
 
-    result = get_credentials()
+    result = get_config()
     username, api_key = result['username'], result['api_key']
     api_url, auth_url = result['api_url'], result['auth_url']
+    ssl_verify = result['ssl_verify']
 
     if options.username:
         username = options.username
@@ -115,7 +116,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
         os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
         _init_once()
 
-    if options.no_ssl_verify:
+    if options.no_ssl_verify or ssl_verify == False:
         libcloud.security.VERIFY_SSL_CERT = False
 
     instance = get_instance(username, api_key, api_url, auth_url)
