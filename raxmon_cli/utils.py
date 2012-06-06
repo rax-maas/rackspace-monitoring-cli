@@ -70,11 +70,12 @@ def instance_to_dict(instance, keys, include_none=False):
     return result
 
 
-def get_credentials():
+def get_config():
     keys = [['credentials', 'username', 'username'],
             ['credentials', 'api_key', 'api_key'],
             ['api', 'url', 'api_url'],
-            ['auth_api', 'url', 'auth_url']]
+            ['auth_api', 'url', 'auth_url'],
+            ['ssl', 'verify', 'ssl_verify']]
 
     result = {}
 
@@ -82,6 +83,7 @@ def get_credentials():
     result['api_key'] = os.getenv('RAXMON_API_KEY', None)
     result['api_url'] = os.getenv('RAXMON_API_URL', None)
     result['auth_url'] = os.getenv('RAXMON_AUTH_URL', None)
+    result['ssl_verify'] = os.getenv('RAXMON_SSL_VERIFY', None)
 
     config = ConfigParser.ConfigParser()
     config.read(os.getenv('RAXMON_RAXRC') or CONFIG_PATH)
@@ -97,6 +99,12 @@ def get_credentials():
             continue
 
         result[key] = value
+
+    # convert "false" to False
+    if result['ssl_verify']:
+        result['ssl_verify'] = not (result['ssl_verify'].lower() == 'false')
+    else:
+        result['ssl_verify'] = True
 
     return result
 

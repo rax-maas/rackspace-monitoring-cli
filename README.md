@@ -37,6 +37,9 @@ url=https://monitoring.api.rackspacecloud.com/v1.0
 
 [auth_api]
 url=https://identity.api.rackspacecloud.com/v2.0
+
+[ssl]
+verify=true
 ```
 
 ## Using bash completion
