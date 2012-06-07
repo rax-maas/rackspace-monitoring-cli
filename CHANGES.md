@@ -1,4 +1,11 @@
-rackspace-monitoring-cli in deveploment:
+rackspace-monitoring-cli v0.4.1 - 2012-06-06:
+
+* Add new [ssl] section with the verify option to the config.
+  [Brandon Philips]
+* Add new hidden agent-id field to the entities command.
+  [Brandon Philips]
+
+rackspace-monitoring-cli v0.4.0 - 2012-05-24:
 
 * Add new `raxmon-checks-test-existing` command.
 * Add new `raxmon-alarms-notification-history-list` command.
