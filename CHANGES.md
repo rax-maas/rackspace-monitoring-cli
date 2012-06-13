@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.4.2 - 2012-06-12:
+
+* Add new `raxmon-monitoring-zones-traceroute` command.
+
 rackspace-monitoring-cli v0.4.1 - 2012-06-06:
 
 * Add new [ssl] section with the verify option to the config.
