@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+from pprint import pprint
+
+try:
+    import simplejson as json
+except ImportError:
+    import json
+
+from raxmon_cli.common import run_action
+from raxmon_cli.utils import str_to_dict, str_to_list
+
+OPTIONS = [
+    [['--id'], {'dest': 'id', 'help': 'Monitoring zone id'}],
+    [['--target'], {'dest': 'target', 'help': 'Target hostname or IP address'}],
+    [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver', 'default': 'IPv4'}]
+]
+
+REQUIRED_OPTIONS = ['id', 'target']
+
+def callback(driver, options, args, callback):
+    mz = driver.get_monitoring_zone(monitoring_zone_id=options.id)
+    result = driver.ex_traceroute(monitoring_zone=mz, target=options.target,
+                                  target_resolver=options.target_resolver)
+
+    pprint(result)
+
+run_action(OPTIONS, REQUIRED_OPTIONS, 'monitoring_zones', 'traceroute',
+           callback)
