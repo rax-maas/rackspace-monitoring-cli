@@ -16,13 +16,13 @@
 
 import os
 
-
 from raxmon_cli import __version__
 
 def list_available_commands():
     files = os.listdir(os.path.dirname(__file__))
     files = [file for file in files if file.find('.pyc') == -1 and
              file.startswith('raxmon-') and file != 'raxmon']
+    files = sorted(files)
 
     print 'Rackspace Monitoring Command Line Tool v%s' % (__version__)
     print('Available commands:\n')
