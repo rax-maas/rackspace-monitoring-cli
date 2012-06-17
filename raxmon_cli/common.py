@@ -57,7 +57,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     required_options = required_options or []
     parser = get_parser()
 
-    def done(result):
+    def done(result=None):
         if action == 'list':
             print_list(result, options.details)
         elif action == 'create':
@@ -69,7 +69,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
                 print_success('Resource deleted')
             else:
                 print_success('Resource not deleted')
-        else:
+        elif result:
             pprint(result)
 
     if action in ACTION_OPTIONS:
