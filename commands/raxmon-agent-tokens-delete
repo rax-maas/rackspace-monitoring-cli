@@ -23,7 +23,7 @@ OPTIONS = [
 REQUIRED_OPTIONS = []
 
 def callback(driver, options, args, callback):
-    at = driver.get_agent_token(token_id=options.id)
+    at = driver.get_agent_token(agent_token_id=options.id)
     status = driver.delete_agent_token(agent_token=at,
                                        who=options.who,
                                        why=options.why)
