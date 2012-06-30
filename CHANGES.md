@@ -1,6 +1,10 @@
+rackspace-monitoring-cli v0.4.3 - 2012-06-29:
+
+* Fix a typo in raxmon-agent-tokens-delete
+
 rackspace-monitoring-cli v0.4.2 - 2012-06-12:
 
-* Add new `raxmon-monitoring-zones-traceroute` command.
+* Add new `raxmon-monitoring-zones-traceroute` command
 
 rackspace-monitoring-cli v0.4.1 - 2012-06-06:
 
