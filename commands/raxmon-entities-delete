@@ -17,9 +17,7 @@
 from raxmon_cli.common import run_action
 
 OPTIONS = [
-    [['--id'], {'dest': 'id', 'help': 'Entity ID'}],
-    [['--delete-children'], {'dest': 'delete_children', 'action': 'store_true',
-                             'help': 'Delete all the Entity children objects'}]
+    [['--id'], {'dest': 'id', 'help': 'Entity ID'}]
 ]
 
 REQUIRED_OPTIONS = ['id']
@@ -27,7 +25,6 @@ REQUIRED_OPTIONS = ['id']
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.id)
     status = driver.delete_entity(entity=en,
-                                  ex_delete_children=options.delete_children,
                                   who=options.who,
                                   why=options.why)
 
