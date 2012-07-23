@@ -1,3 +1,8 @@
+rackspace-monitoring-cli v0.4.4 - 2012-07-23:
+
+* Add new agent related commands.
+* Remove `delete-children` option from the `raxmon-entities-delete commands`
+
 rackspace-monitoring-cli v0.4.3 - 2012-06-29:
 
 * Fix a typo in raxmon-agent-tokens-delete
