@@ -105,7 +105,7 @@ setup(
         'raxmon_cli': ['data/cacert.pem'],
     },
     license='Apache License (2.0)',
-    url='tba',
+    url='https://github.com/racker/rackspace-monitoring-cli',
     cmdclass={
         'pep8': Pep8Command,
         'gencompletions': GenerateCompletionsCommand
