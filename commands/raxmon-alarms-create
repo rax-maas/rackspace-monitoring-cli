@@ -18,7 +18,6 @@ from raxmon_cli.common import run_action
 
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
-    [['--check-type'], {'dest': 'check_type', 'help': 'Check type'}],
     [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
     [['--criteria'], {'dest': 'criteria', 'help': 'Alarm criteria'}],
     [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}]
@@ -28,7 +27,7 @@ REQUIRED_OPTIONS = ['entity_id']
 
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
-    result = driver.create_alarm(entity=en, check_type=options.check_type,
+    result = driver.create_alarm(entity=en,
                                  check_id=options.check_id, criteria=options.criteria,
                                  notification_plan_id=options.notification_plan_id,
                                  who=options.who,
