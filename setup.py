@@ -24,6 +24,11 @@ from subprocess import call
 from os.path import join as pjoin
 
 
+if (sys.version_info < (2, 5, 0) or sys.version_info >= (3, 0, 0)):
+    raise RuntimeError('Unsupported Python version. Supported versions are:' +
+                       '2.5, 2.6, 2.7 / PyPy')
+
+
 def read_version_string():
     version = None
     sys.path.insert(0, pjoin(os.getcwd()))
