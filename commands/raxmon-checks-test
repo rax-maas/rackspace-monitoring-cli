@@ -35,7 +35,7 @@ OPTIONS = [
     [['--json'], {'dest': 'json', 'action': 'store_true', 'help': 'Convert response to JSON'}]
 ]
 
-REQUIRED_OPTIONS = ['entity_id', 'type', 'monitoring_zones']
+REQUIRED_OPTIONS = ['entity_id', 'type']
 
 def callback(driver, options, args, callback):
     options.monitoring_zones = str_to_list(options.monitoring_zones)
