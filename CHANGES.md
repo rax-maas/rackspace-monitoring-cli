@@ -1,3 +1,9 @@
+rackspace-monitoring-cli v0.4.6 - 2012-10-01:
+
+* Include new updated CA certificate file
+* Remove monitoring_zones and label from required options for the checks-create
+  command
+
 rackspace-monitoring-cli v0.4.4 - 2012-07-23:
 
 * Add new agent related commands.
