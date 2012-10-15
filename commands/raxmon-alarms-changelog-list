@@ -17,16 +17,19 @@
 from raxmon_cli.common import run_action
 
 OPTIONS = [
-        [['--entity-id'], {'dest': 'entity_id', 'help': 'Entity ID (Optional)'}]
+        [['--entity-id'],
+            {'dest': 'entity_id', 'help': 'Entity ID (Optional)'}]
 ]
 REQUIRED_OPTIONS = None
 
+
 def callback(driver, options, args, callback):
-    kwargs = {'ex_next_marker': options.marker}
-
+    entity = None
     if options.entity_id is not None:
-        kwargs['entity'] = driver.get_entity(entity_id=options.entity_id)
+        entity = driver.get_entity(entity_id=options.entity_id)
 
-    callback(driver.list_alarm_changelog(**kwargs))
+    callback(driver.list_alarm_changelog(
+        ex_next_marker=options.marker,
+        entity=entity))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarm_changelog', 'list', callback)
