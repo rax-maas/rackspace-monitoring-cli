@@ -15,11 +15,14 @@
 # limitations under the License.
 
 from raxmon_cli.common import run_action
+from raxmon_cli.constants import REVERSE
 
-OPTIONS = None
+OPTIONS = [REVERSE]
+
 REQUIRED_OPTIONS = None
 
+
 def callback(driver, options, args, callback):
-    callback(driver.list_audits())
+    callback(driver.list_audits(reverse=options.reverse))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'audits', 'list', callback)

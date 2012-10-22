@@ -18,7 +18,8 @@ __all__ = [
     'CONFIG_PATH',
     'API_URL_ADDRESS',
     'GLOBAL_OPTIONS',
-    'ACTION_OPTIONS'
+    'ACTION_OPTIONS',
+    'REVERSE'
 ]
 
 import os
@@ -48,7 +49,6 @@ DEBUG = [['--debug'], {'dest': 'debug',
 NO_SSL_VERIFY = [['--no-ssl-verify'], {'dest': 'no_ssl_verify',
                                        'action': 'store_true',
                                        'help': 'Don\'t verify the SSL certificate.'}]
-
 
 WHO = [['--who'], {'dest': 'who',
                            'help': 'Person who performed the action'}]
@@ -93,3 +93,8 @@ ACTION_OPTIONS = {
      ]
 
 }
+
+REVERSE = [['-r', '--reverse'], {'dest': 'reverse',
+                                  'action': 'store_true',
+                                  'default': False,
+                                  'help': 'Reverse results'}]
