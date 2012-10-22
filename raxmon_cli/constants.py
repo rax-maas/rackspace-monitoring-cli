@@ -95,6 +95,6 @@ ACTION_OPTIONS = {
 }
 
 REVERSE = [['-r', '--reverse'], {'dest': 'reverse',
-                                  'action': 'store_true',
-                                  'default': False,
-                                  'help': 'Reverse results'}]
+                                 'action': 'store_true',
+                                 'default': False,
+                                 'help': 'Reverse results'}]
