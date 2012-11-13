@@ -15,7 +15,7 @@
 # limitations under the License.
 
 from raxmon_cli.common import run_action
-from raxmon_cli.utils import instance_to_dict
+from raxmon_cli.utils import instance_to_dict, str_to_dict
 
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
@@ -23,6 +23,7 @@ OPTIONS = [
     [['--label'], {'dest': 'label', 'help': 'Alarm label'}],
     [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
     [['--criteria'], {'dest': 'criteria', 'help': 'Alarm criteria'}],
+    [['--metadata'], {'dest': 'metadata', 'help': 'Alarm metadata'}],
     [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}]
 ]
 
@@ -30,7 +31,8 @@ REQUIRED_OPTIONS = ['entity_id', 'id']
 
 def callback(driver, options, args, callback):
     al = driver.get_alarm(entity_id=options.entity_id, alarm_id=options.id)
-    keys = ['check_id', 'criteria', 'notification_plan_id']
+    options.metadata = str_to_dict(options.metadata)
+    keys = ['check_id', 'criteria', 'notification_plan_id', 'label', 'metadata']
 
     data = instance_to_dict(options, keys, False)
     result = driver.update_alarm(alarm=al, data=data,
