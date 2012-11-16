@@ -28,7 +28,8 @@ OPTIONS = [[['--agent-id'],
 REQUIRED_OPTIONS = ['agentIds', 'includes']
 
 def callback(driver, options, args, callback):
-    result = driver.ex_views_agent_host_info(agentIds=options.agentIds, includes=options.includes) #, ex_next_marker=options.marker)
+    result = driver.ex_views_agent_host_info(agentIds=options.agentIds, includes=options.includes,
+                                             ex_next_marker=options.marker)
     callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'views', 'agentHostInfo', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'views', 'overview', callback)
