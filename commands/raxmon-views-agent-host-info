@@ -20,12 +20,12 @@ OPTIONS = [[['--agent-id'],
             {'dest': 'agentIds',
              'help': 'Agent IDs to operate on (specify option multiple times)',
              'action': 'append'}],
-           [['--include'], 
-            {'dest': 'includes', 
-             'help': ('Host Info Types to view (specify option multiple times)',
+           [['--include'],
+            {'dest': 'includes',
+             'help': 'Host Info Types to view (specify option multiple times)',
              'action': 'append'}]]
 
-REQUIRED_OPTIONS = ['agentIds','includes']
+REQUIRED_OPTIONS = ['agentIds', 'includes']
 
 def callback(driver, options, args, callback):
     result = driver.ex_views_agent_host_info(agentIds=options.agentIds, includes=options.includes) #, ex_next_marker=options.marker)
