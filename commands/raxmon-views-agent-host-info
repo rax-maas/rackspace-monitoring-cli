@@ -15,29 +15,21 @@
 # limitations under the License.
 
 from raxmon_cli.common import run_action
-from raxmon_cli.constants import REVERSE
 
-OPTIONS = [
-    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity ID'}],
-    [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
-    [['--id'], {'dest': 'id', 'help': 'Alarm ID'}],
-    REVERSE]
+OPTIONS = [[['--agent-id'],
+            {'dest': 'agentIds',
+             'help': 'Agent IDs to operate on (specify option multiple times)',
+             'action': 'append'}],
+           [['--include'],
+            {'dest': 'includes',
+             'help': 'Host Info Types to view (specify option multiple times)',
+             'action': 'append'}]]
 
-REQUIRED_OPTIONS = ['entity_id', 'check_id', 'id']
-
+REQUIRED_OPTIONS = ['agentIds', 'includes']
 
 def callback(driver, options, args, callback):
-    entity = driver.get_entity(entity_id=options.entity_id)
-    check = driver.get_check(entity_id=options.entity_id,
-                             check_id=options.check_id)
-    alarm = driver.get_alarm(entity_id=options.entity_id, alarm_id=options.id)
-    reverse = options.reverse
-    callback(
-        driver.ex_list_alarm_notification_history(
-            entity=entity,
-            alarm=alarm,
-            check=check,
-            reverse=reverse))
+    result = driver.ex_views_agent_host_info(agentIds=options.agentIds, includes=options.includes,
+                                             ex_next_marker=options.marker)
+    callback(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'alarm_notification_history', 'list',
-           callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'views', 'overview', callback)
