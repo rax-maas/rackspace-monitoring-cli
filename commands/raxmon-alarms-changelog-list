@@ -17,13 +17,22 @@
 from raxmon_cli.common import run_action
 from raxmon_cli.constants import REVERSE
 
-OPTIONS = [REVERSE]
-
+OPTIONS = [
+        REVERSE,
+        [['--entity-id'],
+            {'dest': 'entity_id', 'help': 'Entity ID (Optional)'}]
+]
 REQUIRED_OPTIONS = None
 
 
 def callback(driver, options, args, callback):
-    callback(driver.list_alarm_changelog(ex_next_marker=options.marker,
-                                         reverse=options.reverse))
+    entity = None
+    if options.entity_id is not None:
+        entity = driver.get_entity(entity_id=options.entity_id)
+
+    callback(driver.list_alarm_changelog(
+        ex_next_marker=options.marker,
+        entity=entity,
+        reverse=options.reverse))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'alarm_changelog', 'list', callback)
