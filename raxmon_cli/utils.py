@@ -16,6 +16,7 @@
 from __future__ import with_statement
 
 import os
+import re
 
 try:
     import ConfigParser
@@ -45,17 +46,18 @@ def str_to_dict(string):
         return None
 
     result = {}
-    split = string.split(',')
-
-    for value in split:
-        split2 = value.split('=')
-
-        if len(split2) == 2:
-            key, value = split2
-            result[key] = value
+    kv_pairs = re.findall('(\w+)=((\[(.*)\])|[^,]*)', string)
+    if kv_pairs:
+        for match_exp in kv_pairs:
+            key = match_exp[0]
+            string_value = match_exp[1]
+            array_value = match_exp[3]
+            if array_value:
+                result[key] = array_value.split(',')
+            else:
+                result[key] = string_value
 
     return result
-
 
 def instance_to_dict(instance, keys, include_none=False):
     result = {}
