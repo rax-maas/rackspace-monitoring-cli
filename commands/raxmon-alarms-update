@@ -24,8 +24,7 @@ OPTIONS = [
     [['--check-id'], {'dest': 'check_id', 'help': 'Check ID'}],
     [['--criteria'], {'dest': 'criteria', 'help': 'Alarm criteria'}],
     [['--metadata'], {'dest': 'metadata', 'help': 'Alarm metadata'}],
-    [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}],
-    [['--disabled'], {'dest': 'disabled', 'help': 'Alarm disabled status'}]
+    [['--notification-plan-id'], {'dest': 'notification_plan_id', 'help': 'Notification plan id'}]
 ]
 
 REQUIRED_OPTIONS = ['entity_id', 'id']
@@ -33,8 +32,7 @@ REQUIRED_OPTIONS = ['entity_id', 'id']
 def callback(driver, options, args, callback):
     al = driver.get_alarm(entity_id=options.entity_id, alarm_id=options.id)
     options.metadata = str_to_dict(options.metadata)
-    keys = ['check_id', 'criteria', 'notification_plan_id', 'label', 'metadata',
-            'disabled']
+    keys = ['check_id', 'criteria', 'notification_plan_id', 'label', 'metadata']
 
     data = instance_to_dict(options, keys, False)
     result = driver.update_alarm(alarm=al, data=data,
