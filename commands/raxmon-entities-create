@@ -23,7 +23,7 @@ OPTIONS = [
     [['--label'], {'dest': 'label', 'help': 'Entity label'}],
     [['--ip-addresses'], {'dest': 'ip_addresses', 'help': 'Entity IP addresses'}],
     [['--metadata'], {'dest': 'metadata', 'help': 'Entity metadata'}],
-    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID', 'help': optparse.SUPPRESS_HELP}]
+    [['--agent-id'], {'dest': 'agent_id', help': 'Entity agent ID'}]
 ]
 
 REQUIRED_OPTIONS = ['label']
