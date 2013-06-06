@@ -35,7 +35,6 @@ CA_CERT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)),
 libcloud.security.CA_CERTS_PATH.insert(0, CA_CERT_PATH)
 
 from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
-from raxmon_cli.constants import API_URL_ADDRESS
 from raxmon_cli.printers import print_list, print_error, print_success
 from raxmon_cli.utils import get_config
 
@@ -97,8 +96,6 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     if options.api_key:
         api_key = options.api_key
-
-    api_url = api_url or API_URL_ADDRESS
 
     if options.api_url:
         api_url = options.api_url

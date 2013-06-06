@@ -16,7 +16,6 @@
 __all__ = [
     'CREDENTIALS_FILE',
     'CONFIG_PATH',
-    'API_URL_ADDRESS',
     'GLOBAL_OPTIONS',
     'ACTION_OPTIONS',
     'REVERSE'
@@ -28,11 +27,10 @@ from os.path import join as pjoin, expanduser
 CREDENTIALS_FILE = '.raxrc'
 CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
-API_URL_ADDRESS = 'https://monitoring.api.rackspacecloud.com/v1.0'
-
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]
 API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]
-API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL'}]
+API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL including the' +
+                                                      'tenant id'}]
 AUTH_URL = [['--auth-url'], {'dest': 'auth_url', 'help': 'Auth URL'}]
 
 DETAILS = [['--details'], {'dest': 'details', 'action': 'store_true',
