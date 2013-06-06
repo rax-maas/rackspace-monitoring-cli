@@ -1,8 +1,8 @@
-rackspace-monitoring-cli v0.5.0 - in development
+rackspace-monitoring-cli v0.5.0 - 2013-06-06:
 
 * Depend on rackspace-monitoring v0.5
 
-rackspace-monitoring-cli v0.4.6 - 2012-10-01:
+rackspace-monitoring-cli v0.4.6 - 2013-10-01:
 
 * Include new updated CA certificate file
 * Remove monitoring_zones and label from required options for the checks-create
