@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.5.1 - 2013-06-17:
+
+* Add raxmon-agent-installer
+
 rackspace-monitoring-cli v0.5.0 - 2013-06-06:
 
 * Depend on rackspace-monitoring v0.5
