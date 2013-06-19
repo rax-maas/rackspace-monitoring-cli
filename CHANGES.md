@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.5.2 - 2013-06-19:
+
+* Fix typo in raxmon-entities-create command
+
 rackspace-monitoring-cli v0.5.1 - 2013-06-17:
 
 * Add raxmon-agent-installer
