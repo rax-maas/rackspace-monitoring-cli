@@ -83,7 +83,8 @@ def run_action(cmd_options, required_options, resource, action, callback):
     for option in required_options:
         if not getattr(options, option, None):
             parser.print_help()
-            print('\nMissing required options: ' + option)
+            opt_str = [opt_str for (opt_str, attr) in all_options if attr['dest'] == option]
+            print('\nMissing required option: ' + opt_str[0][0])
             sys.exit(1)
 
     result = get_config()
