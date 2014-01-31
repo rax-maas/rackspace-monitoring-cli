@@ -21,6 +21,7 @@ from raxmon_cli.utils import str_to_list
 
 OPTIONS = [
     [['--notification-plans'], {'dest': 'notification_plans', 'help': 'Suppression notification plans'}],
+    [['--entities'], {'dest': 'entities', 'help': 'Suppression entities'}],
     [['--alarms'], {'dest': 'alarms', 'help': 'Suppression alarms'}],
     [['--checks'], {'dest': 'checks', 'help': 'Suppression checks'}],
     [['--start-time'], {'dest': 'start_time', 'help': 'Suppression start time (Unix time in milliseconds)'}],
@@ -31,9 +32,11 @@ REQUIRED_OPTIONS = ['start_time', 'end_time']
 
 def callback(driver, options, args, callback):
     options.notification_plans = str_to_list(options.notification_plans)
+    options.entities = str_to_list(options.entities)
     options.alarms = str_to_list(options.alarms)
     options.checks = str_to_list(options.checks)
     result = driver.create_suppression(notification_plans=options.notification_plans,
+                                       entities=options.entities,
                                        alarms=options.alarms,
                                        checks=options.checks,
                                        start_time=options.start_time,
