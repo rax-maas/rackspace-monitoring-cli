@@ -73,6 +73,8 @@ def instance_to_dict(instance, keys, include_none=False):
 def get_config():
     keys = [['credentials', 'username', 'username'],
             ['credentials', 'api_key', 'api_key'],
+            ['credentials', 'token', 'api_token'],
+            ['credentials', 'tenant', 'tenant'],
             ['api', 'url', 'api_url'],
             ['auth_api', 'url', 'auth_url'],
             ['ssl', 'verify', 'ssl_verify']]
@@ -81,9 +83,12 @@ def get_config():
 
     result['username'] = os.getenv('RAXMON_USERNAME', None)
     result['api_key'] = os.getenv('RAXMON_API_KEY', None)
-    result['api_url'] = os.getenv('RAXMON_API_URL', None)
+    result['api_url'] = os.getenv('RAXMON_API_URL',
+                                  'https://monitoring.api.rackspacecloud.com/v1.0')
     result['auth_url'] = os.getenv('RAXMON_AUTH_URL', None)
     result['ssl_verify'] = os.getenv('RAXMON_SSL_VERIFY', None)
+    result['api_token'] = os.getenv('RAXMON_API_TOKEN', None)
+    result['tenant'] = os.getenv('RAXMON_TENANT', None)
 
     config = ConfigParser.ConfigParser()
     config.read(os.getenv('RAXMON_RAXRC') or CONFIG_PATH)
