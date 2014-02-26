@@ -18,6 +18,7 @@ from __future__ import absolute_import
 import os
 import os.path
 import sys
+
 import traceback
 from pprint import pprint
 from optparse import OptionParser
@@ -31,10 +32,10 @@ import libcloud.security
 from libcloud import _init_once
 
 CA_CERT_PATH = os.path.join(os.path.abspath(os.path.dirname(__file__)),
-                       'data/cacert.pem')
+                            'data/cacert.pem')
 libcloud.security.CA_CERTS_PATH.insert(0, CA_CERT_PATH)
 
-from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS
+from raxmon_cli.constants import GLOBAL_OPTIONS, ACTION_OPTIONS, CONFLICTING_OPTIONS
 from raxmon_cli.printers import print_list, print_error, print_success
 from raxmon_cli.utils import get_config
 
@@ -80,6 +81,16 @@ def run_action(cmd_options, required_options, resource, action, callback):
     optcomplete.autocomplete(parser)
     (options, args) = parser.parse_args()
 
+    for options_list in CONFLICTING_OPTIONS:
+        matched = []
+        for opt in options_list:
+            if getattr(options, opt):
+                matched.append(opt)
+
+        if len(matched) > 1:
+            print('\nConflicting options %s' % str(options_list))
+            sys.exit(1)
+
     for option in required_options:
         if not getattr(options, option, None):
             parser.print_help()
@@ -103,20 +114,26 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.auth_url:
         auth_url = options.auth_url
 
-    if not username or not api_key:
-        print('No username and API key provided!')
+    api_token = options.api_token if options.api_token else None
+
+    if not api_token and not username and not api_key or username and not api_key:
+        print('No username and API key or API token provided!')
         print('You need to either put credentials in ~/.raxrc or ' +
               'pass them to the command using --username and --api-key option')
         sys.exit(1)
+    if api_token and not api_url:
+        print('--api-token requires --api-url! example --api-url --api-url' +
+              'https://monitoring.api.rackspacecloud.com:443/v1.0/1234556')
 
     if options.debug:
         os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
         _init_once()
 
-    if options.no_ssl_verify or ssl_verify == False:
+    if options.no_ssl_verify or ssl_verify is False:
         libcloud.security.VERIFY_SSL_CERT = False
 
-    instance = get_instance(username, api_key, api_url, auth_url)
+    instance = get_instance(username, api_url, auth_url=auth_url, api_key=api_key,
+                            api_token=api_token)
 
     if not getattr(options, 'who', None):
         options.who = username
@@ -127,10 +144,11 @@ def run_action(cmd_options, required_options, resource, action, callback):
         traceback.print_exc(file=sys.stderr)
 
 
-def get_instance(username, api_key, url, auth_url=None):
+def get_instance(username, url, api_key=None, api_token=None, auth_url=None):
     driver = get_driver(Provider.RACKSPACE)
 
     kwargs = {}
+    kwargs['ex_force_auth_token'] = api_token
     kwargs['ex_force_base_url'] = url
     kwargs['ex_force_auth_url'] = auth_url
     instance = driver(username, api_key, **kwargs)
