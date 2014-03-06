@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.6.0 - 2014-03-06:
+
+* Add support for suppressions
+
 rackspace-monitoring-cli v0.5.2 - 2013-06-19:
 
 * Fix typo in raxmon-entities-create command
