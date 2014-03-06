@@ -22,15 +22,17 @@ OPTIONS = [
     [['--label'], {'dest': 'label', 'help': 'Notification label'}],
     [['--type'], {'dest': 'type', 'help': 'Notification type'}],
     [['--details'], {'dest': 'details', 'help': 'Notification details'}],
+    [['--metadata'], {'dest': 'metadata', 'help': 'Notification metadata'}],
 ]
 
 REQUIRED_OPTIONS = ['id']
 
 def callback(driver, options, args, callback):
     options.details = str_to_dict(options.details)
+    options.metadata = str_to_dict(options.metadata)
     no = driver.get_notification(notification_id=options.id)
 
-    data = instance_to_dict(options, ['label', 'type', 'details'], False)
+    data = instance_to_dict(options, ['label', 'type', 'details', 'metadata'], False)
     result = driver.update_notification(notification=no, data=data,
                                         who=options.who,
                                         why=options.why)

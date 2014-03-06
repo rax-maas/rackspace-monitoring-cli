@@ -28,7 +28,8 @@ OPTIONS = [
     [['--monitoring-zones'], {'dest': 'monitoring_zones', 'help': 'A list of monitoring zones'}],
     [['--target-alias'], {'dest': 'target_alias', 'help': 'Target alias'}],
     [['--target-hostname'], {'dest': 'target_hostname', 'help': 'Target hostname'}],
-    [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}]
+    [['--target-resolver'], {'dest': 'target_resolver', 'help': 'Target resolver'}],
+    [['--metadata'], {'dest': 'metadata', 'help': 'Check metadata'}],
 ]
 
 REQUIRED_OPTIONS = ['entity_id', 'id']
@@ -36,8 +37,9 @@ REQUIRED_OPTIONS = ['entity_id', 'id']
 def callback(driver, options, args, callback):
     options.monitoring_zones = str_to_list(options.monitoring_zones)
     options.details = str_to_dict(options.details)
+    options.metadata = str_to_dict(options.metadata)
     keys = ['label', 'type', 'details', 'timeout', 'period', 'monitoring_zones',
-            'target_alias', 'target_hostname', 'target_resolver']
+            'target_alias', 'target_hostname', 'target_resolver', 'metadata']
 
     ch = driver.get_check(entity_id=options.entity_id, check_id=options.id)
     data = instance_to_dict(options, keys, False)

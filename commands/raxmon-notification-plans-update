@@ -15,7 +15,7 @@
 # limitations under the License.
 
 from raxmon_cli.common import run_action
-from raxmon_cli.utils import str_to_list, instance_to_dict
+from raxmon_cli.utils import str_to_dict, str_to_list, instance_to_dict
 
 OPTIONS = [
     [['--id'], {'dest': 'id', 'help': 'Notification plan id'}],
@@ -23,6 +23,7 @@ OPTIONS = [
     [['--critical-state'], {'dest': 'critical_state', 'help': 'A list of Notification ids for CRITICAL state'}],
     [['--warning-state'], {'dest': 'warning_state', 'help': 'A list of Notification ids for WARNING state'}],
     [['--ok-state'], {'dest': 'ok_state', 'help': 'A list of Notification ids for OK state'}],
+    [['--metadata'], {'dest': 'metadata', 'help': 'Notification Plan metadata'}],
 ]
 
 REQUIRED_OPTIONS = ['id']
@@ -31,9 +32,10 @@ def callback(driver, options, args, callback):
     options.critical_state = str_to_list(options.critical_state)
     options.warning_state = str_to_list(options.warning_state)
     options.ok_state = str_to_list(options.ok_state)
+    options.metadata = str_to_dict(options.metadata)
 
     np = driver.get_notification_plan(notification_plan_id=options.id)
-    keys = ['label', 'critical_state', 'warning_state', 'ok_state']
+    keys = ['label', 'critical_state', 'warning_state', 'ok_state', 'metadata']
     data = instance_to_dict(options, keys, False)
     result = driver.update_notification_plan(notification_plan=np, data=data,
                                              who=options.who,
