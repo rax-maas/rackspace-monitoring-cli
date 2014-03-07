@@ -64,6 +64,13 @@ class Pep8Command(Command):
         sys.exit(retcode)
 
 
+# Create a PipOptions object that stubs out options that older versions of pip expect to exist.
+class PipOptions(object):
+    def __init__(self):
+        self.skip_requirements_regex = None
+        self.default_vcs = None
+
+
 class GenerateCompletionsCommand(Command):
     description = "Generate bash completions file for all the commands"
     user_options = []
@@ -89,7 +96,9 @@ scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 
 pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
 
-requires = [str(ir.req) for ir in parse_requirements('requirements.txt')]
+
+options = PipOptions()
+requires = [str(ir.req) for ir in parse_requirements('requirements.txt', options=options)]
 
 if pre_python26:
     requires.append('simplejson')
