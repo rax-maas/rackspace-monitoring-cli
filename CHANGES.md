@@ -1,3 +1,8 @@
+rackspace-monitoring-cli v0.6.2 - 2013-03-07:
+
+* Depend on rackspace-monitoring v0.6.1
+* Expose metadata on checks, notifications, and notification plans
+
 rackspace-monitoring-cli v0.6.1 - 2014-03-06:
 
 * Add requirements.txt to MANIFEST
