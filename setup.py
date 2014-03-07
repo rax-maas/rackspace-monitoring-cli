@@ -22,7 +22,6 @@ from distutils.core import setup
 from distutils.core import Command
 from subprocess import call
 from os.path import join as pjoin
-from pip.req import parse_requirements
 
 
 if (sys.version_info < (2, 5, 0) or sys.version_info >= (3, 0, 0)):
@@ -89,7 +88,8 @@ scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 
 pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
 
-requires = [str(ir.req) for ir in parse_requirements('requirements.txt')]
+requirements_lines = [line.strip() for line in open('requirements.txt').readlines()]
+requires = list(filter(None, requirements_lines))
 
 if pre_python26:
     requires.append('simplejson')
