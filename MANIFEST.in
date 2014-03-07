@@ -1,1 +1,2 @@
 include commands/*
+include requirements.txt
