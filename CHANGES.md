@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.6.1 - 2014-03-06:
+
+* Add requirements.txt to MANIFEST
+
 rackspace-monitoring-cli v0.6.0 - 2014-03-06:
 
 * Add support for suppressions
