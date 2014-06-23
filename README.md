@@ -25,6 +25,10 @@ setting the `RAXMON_RAXRC` environment variable. For example:
 
 `RAXMON_RAXRC=~/.raxrc.uk raxmon-entities-list`
 
+Note:
+* US API authentication end point is the default value and can be omitted
+* UK API authentication end point is https://lon.identity.api.rackspacecloud.com/v2.0/tokens
+
 ### Example configuration file
 
 ```
@@ -36,7 +40,7 @@ api_key=bar
 url=https://monitoring.api.rackspacecloud.com/v1.0
 
 [auth_api]
-url=https://identity.api.rackspacecloud.com/v2.0
+url=https://identity.api.rackspacecloud.com/v2.0/tokens
 
 [ssl]
 verify=true
