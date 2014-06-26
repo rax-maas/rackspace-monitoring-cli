@@ -29,11 +29,13 @@ CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]
 API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]
-API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL including the' +
-                                                      ' tenant id'}]
-API_TOKEN = [['--api-token'], {'dest': 'api_token', 'help': 'API Auth token from a' +
-                               ' previous request or an impersonation token.' +
-                               ' Conflicts with --api-key.'}]
+API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL Example: '
+                                                      'https://monitoring.api.'
+                                                      'rackspacecloud.com/v1.0'}]
+TENANT = [['--tenant'], {'help': 'Tenant id'}]
+API_TOKEN = [['--api-token'], {'dest': 'api_token', 'help': 'API Auth token from a '
+                               'previous request or an impersonation token. '
+                               'Requires: --tenant Conflicts: --api-key.'}]
 AUTH_URL = [['--auth-url'], {'dest': 'auth_url', 'help': 'Auth URL'}]
 
 DETAILS = [['--details'], {'dest': 'details', 'action': 'store_true',
@@ -61,18 +63,23 @@ WHY = [['--why'], {'dest': 'why',
 GLOBAL_OPTIONS = [
     API_URL,
     USERNAME,
+    TENANT,
     API_KEY,
+    API_TOKEN,
     DEBUG,
     NO_SSL_VERIFY,
     AUTH_URL,
-    API_TOKEN
 ]
 
 ACTION_OPTIONS = {
     'list': [
         DETAILS,
         MARKER
-     ],
+    ],
+
+    'get': [
+        DETAILS,
+    ],
 
     'create': [
       WHO,

@@ -19,8 +19,22 @@ from pprint import pprint
 __all__ = [
     'print_list',
     'print_success',
-    'print_error'
+    'print_error',
+    'print_item'
 ]
+
+
+def print_item(data, include_details=False):
+    """Print dict item: optionally with details"""
+
+    if not data:
+        pprint(data)
+        return
+
+    if include_details:
+        pprint(data.__dict__)
+    else:
+        pprint(data)
 
 
 def print_list(data, include_details=False):

@@ -22,6 +22,7 @@ OPTIONS = [
 
 REQUIRED_OPTIONS = ['entity_id']
 
+
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
     callback(driver.list_checks(entity=en, ex_next_marker=options.marker))
