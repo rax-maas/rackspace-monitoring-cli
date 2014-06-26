@@ -124,6 +124,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if api_token and not api_url:
         print('--api-token requires --api-url! example --api-url --api-url' +
               'https://monitoring.api.rackspacecloud.com:443/v1.0/1234556')
+        sys.exit(1)
 
     if options.debug:
         os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
