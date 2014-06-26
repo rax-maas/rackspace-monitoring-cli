@@ -29,11 +29,13 @@ CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]
 API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]
-API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL including the' +
-                                                      ' tenant id'}]
-API_TOKEN = [['--api-token'], {'dest': 'api_token', 'help': 'API Auth token from a' +
-                               ' previous request or an impersonation token.' +
-                               ' Conflicts with --api-key.'}]
+API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL including the '
+                                                      'tenant id Example: '
+                                                      'https://monitoring.api.'
+                                                      'rackspacecloud.com/v1.0/1234556'}]
+API_TOKEN = [['--api-token'], {'dest': 'api_token', 'help': 'API Auth token from a '
+                               'previous request or an impersonation token. '
+                               'Requires: --api-url Conflicts: --api-key.'}]
 AUTH_URL = [['--auth-url'], {'dest': 'auth_url', 'help': 'Auth URL'}]
 
 DETAILS = [['--details'], {'dest': 'details', 'action': 'store_true',
