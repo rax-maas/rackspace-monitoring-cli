@@ -1,3 +1,16 @@
+rackspace-monitoring-cli v0.6.1 - 2014-03-07:
+
+* Add a hack to setup.py to enable backwards compat with old versions of
+  pip.
+
+rackspace-monitoring-cli v0.6.1 - 2014-03-06:
+
+* Add requirements.txt to MANIFEST
+
+rackspace-monitoring-cli v0.6.0 - 2014-03-06:
+
+* Add support for suppressions
+
 rackspace-monitoring-cli v0.5.2 - 2013-06-19:
 
 * Fix typo in raxmon-entities-create command

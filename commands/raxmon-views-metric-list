@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -13,4 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = '0.6.2'
+from raxmon_cli.common import run_action
+
+OPTIONS = None
+REQUIRED_OPTIONS = None
+
+def callback(driver, options, args, callback):
+    result = driver.ex_views_metric_list()
+    callback(result)
+
+run_action(OPTIONS, REQUIRED_OPTIONS, 'views', 'metric_list', callback)
