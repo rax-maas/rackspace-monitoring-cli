@@ -18,12 +18,18 @@ from raxmon_cli.common import run_action
 
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity id'}],
+    [['--id'], {'help': 'Alarm id, optionally filter by check id'}]
 ]
 
 REQUIRED_OPTIONS = ['entity_id']
 
 def callback(driver, options, args, callback):
     en = driver.get_entity(entity_id=options.entity_id)
-    callback(driver.list_checks(entity=en, ex_next_marker=options.marker))
+    if options.id:
+        check = driver.get_check(en.id, options.id)
+        callback([check])
+    else:
+        callback(driver.list_checks(entity=en,
+                                    ex_next_marker=options.marker))
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'list', callback)
