@@ -121,10 +121,12 @@ def run_action(cmd_options, required_options, resource, action, callback):
         print('You need to either put credentials in ~/.raxrc or ' +
               'pass them to the command using --username and --api-key option')
         sys.exit(1)
-    if api_token and not api_url:
-        print('--api-token requires --api-url! example --api-url --api-url' +
-              'https://monitoring.api.rackspacecloud.com:443/v1.0/1234556')
+
+    if api_token and not options.tenant:
+        print("--api-token requires a --tenant id!")
         sys.exit(1)
+    else:
+        api_url = api_url + '/' + options.tenant
 
     if options.debug:
         os.environ['LIBCLOUD_DEBUG'] = '/dev/stderr'
