@@ -55,4 +55,4 @@ def callback(driver, options, args, callback):
 
     print(result)
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'cteate', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'create', callback)
