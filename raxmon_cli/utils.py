@@ -52,7 +52,13 @@ def str_to_dict(string):
 
         if len(split2) == 2:
             key, value = split2
-            result[key] = value
+            if key in result:
+                if isinstance(result[key], list):
+                    result[key].append(value)
+                else:
+                    result[key] = [result[key], value]
+            else:
+                result[key] = value
 
     return result
 
