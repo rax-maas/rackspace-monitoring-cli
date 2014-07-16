@@ -14,24 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+
 from raxmon_cli.common import run_action
 
-OPTIONS = [
-    [['--entity-id'], {'dest': 'entity_id', 'help': 'Parent Entity id'}],
-    [['--check-id'], {'dest': 'check_id', 'help': 'Show only alarms for check id'}]
-]
-
+OPTIONS = [[['--id'], {'dest': 'entity_id', 'help': 'Parent Entity id'}]]
 REQUIRED_OPTIONS = ['entity_id']
 
 
 def callback(driver, options, args, callback):
-    en = driver.get_entity(entity_id=options.entity_id)
-    alarms = driver.list_alarms(entity=en, ex_next_marker=options.marker)
-    if options.check_id:
-        try:
-            alarms = [alarm for alarm in alarms if alarm.check_id == options.check_id]
-        except AttributeError:
-            pass
-    callback(alarms)
+    callback(driver.get_entity(entity_id=options.entity_id))
 
-run_action(OPTIONS, REQUIRED_OPTIONS, 'alarms', 'list', callback)
+run_action(OPTIONS, REQUIRED_OPTIONS, 'entities', 'get', callback)
