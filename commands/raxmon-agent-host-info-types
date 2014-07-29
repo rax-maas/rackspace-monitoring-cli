@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -13,4 +14,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = '0.6.3'
+from raxmon_cli.common import run_action
+
+OPTIONS = [
+    [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID'}],
+]
+
+REQUIRED_OPTIONS = ['agent_id', ]
+
+def callback(driver, options, args, callback):
+    result = driver.get_agent_host_info_types(agent_id=options.agent_id)
+    callback(result)
+
+run_action(OPTIONS, REQUIRED_OPTIONS, 'agent_host_info_types', 'view', callback)
