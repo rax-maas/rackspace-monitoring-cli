@@ -35,6 +35,11 @@ REQUIRED_OPTIONS = ['entity_id', 'type']
 def callback(driver, options, args, callback):
     options.monitoring_zones = str_to_list(options.monitoring_zones)
     options.details = str_to_dict(options.details)
+
+    if options.type == 'agent.plugin':
+        if options.details.get('args') and not isinstance(options.details['args'], list):
+            options.details['args'] = [options.details['args']]
+
     en = driver.get_entity(entity_id=options.entity_id)
     result = driver.create_check(label=options.label, timeout=options.timeout,
                                  period=options.period, entity=en,
