@@ -1,3 +1,15 @@
+rackspace-monitoring-cli v0.6.4 - 2014-08-06:
+
+* Allow agent plugin checks to be created with a single argument.
+
+rackspace-monitoring-cli v0.6.3 - 2014-08-06:
+
+* Expose hostinfoTypes command
+
+rackspace-monitoring-cli v0.6.2 - 2014-08-06:
+
+* Allow arrays to be specified as part of a details object.
+
 rackspace-monitoring-cli v0.6.1 - 2014-03-07:
 
 * Add a hack to setup.py to enable backwards compat with old versions of
