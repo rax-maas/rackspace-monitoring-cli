@@ -42,8 +42,8 @@ def callback(driver, options, args, callback):
     ch = driver.get_check(entity_id=options.entity_id, check_id=options.id)
 
     if ch.type == 'agent.plugin':
-        if options.details.args and !isinstance(options.details.args, list):
-            options.details.args = [options.details.args]
+        if options.details.get('args') and not isinstance(options.details['args'], list):
+            options.details['args'] = [options.details['args']]
 
     data = instance_to_dict(options, keys, False)
     result = driver.update_check(check=ch, data=data)
