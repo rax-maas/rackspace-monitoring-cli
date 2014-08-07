@@ -90,6 +90,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     username, api_key = result['username'], result['api_key']
     api_url, auth_url = result['api_url'], result['auth_url']
     ssl_verify = result['ssl_verify']
+    auth_token = result['auth_token']
 
     if options.username:
         username = options.username
@@ -99,6 +100,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     if options.api_url:
         api_url = options.api_url
+
+    if options.auth_token:
+        auth_token = options.auth_token
 
     if options.auth_url:
         auth_url = options.auth_url
@@ -116,7 +120,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.no_ssl_verify or ssl_verify == False:
         libcloud.security.VERIFY_SSL_CERT = False
 
-    instance = get_instance(username, api_key, api_url, auth_url)
+    instance = get_instance(username, api_key, api_url, auth_url, auth_token)
 
     if not getattr(options, 'who', None):
         options.who = username
@@ -127,12 +131,13 @@ def run_action(cmd_options, required_options, resource, action, callback):
         traceback.print_exc(file=sys.stderr)
 
 
-def get_instance(username, api_key, url, auth_url=None):
+def get_instance(username, api_key, url, auth_url=None, auth_token=None):
     driver = get_driver(Provider.RACKSPACE)
 
     kwargs = {}
     kwargs['ex_force_base_url'] = url
     kwargs['ex_force_auth_url'] = auth_url
+    kwargs['ex_force_auth_token'] = auth_token
     instance = driver(username, api_key, **kwargs)
 
     return instance

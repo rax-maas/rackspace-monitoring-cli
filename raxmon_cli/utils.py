@@ -80,6 +80,7 @@ def get_config():
     keys = [['credentials', 'username', 'username'],
             ['credentials', 'api_key', 'api_key'],
             ['api', 'url', 'api_url'],
+            ['api', 'token', 'auth_token'],
             ['auth_api', 'url', 'auth_url'],
             ['ssl', 'verify', 'ssl_verify']]
 
@@ -90,6 +91,7 @@ def get_config():
     result['api_url'] = os.getenv('RAXMON_API_URL', None)
     result['auth_url'] = os.getenv('RAXMON_AUTH_URL', None)
     result['ssl_verify'] = os.getenv('RAXMON_SSL_VERIFY', None)
+    result['auth_token'] = os.getenv('RAXMON_AUTH_TOKEN', None)
 
     config = ConfigParser.ConfigParser()
     config.read(os.getenv('RAXMON_RAXRC') or CONFIG_PATH)
