@@ -29,7 +29,7 @@ CONFIG_PATH = pjoin(expanduser('~'), CREDENTIALS_FILE)
 
 USERNAME = [['--username'], {'dest': 'username', 'help': 'API username'}]
 API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]
-API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL including the' +
+API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL excluding the ' +
                                                       'tenant id'}]
 AUTH_URL = [['--auth-url'], {'dest': 'auth_url', 'help': 'Auth URL'}]
 
