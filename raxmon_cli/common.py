@@ -88,9 +88,9 @@ def run_action(cmd_options, required_options, resource, action, callback):
 
     result = get_config()
     username, api_key = result['username'], result['api_key']
-    api_url, auth_url = result['api_url'], result['auth_url']
+    auth_token, api_url = result['auth_token'], result['api_url']
+    auth_url = result['auth_url']
     ssl_verify = result['ssl_verify']
-    auth_token = result['auth_token']
 
     if options.username:
         username = options.username
@@ -107,10 +107,11 @@ def run_action(cmd_options, required_options, resource, action, callback):
     if options.auth_url:
         auth_url = options.auth_url
 
-    if not username or not api_key:
-        print('No username and API key provided!')
-        print('You need to either put credentials in ~/.raxrc or ' +
-              'pass them to the command using --username and --api-key option')
+    if (not username or not api_key) and (not auth_token or not api_url):
+        print('No username/API key or auth token/API URL provided!')
+        print('You need to either put credentials in ~/.raxrc or '
+              'pass them to the command using --username/--api-key '
+              'or --auth-token/--api-url options')
         sys.exit(1)
 
     if options.debug:
