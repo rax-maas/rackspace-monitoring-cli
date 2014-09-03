@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.6.6 - 2014-09-03:
+
+* Allow a pre-generated auth token to be passed in place of an API key
+
 rackspace-monitoring-cli v0.6.4 - 2014-08-06:
 
 * Allow agent plugin checks to be created with a single argument.
