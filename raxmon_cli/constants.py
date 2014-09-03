@@ -32,6 +32,7 @@ API_KEY = [['--api-key'], {'dest': 'api_key', 'help': 'API key'}]
 API_URL = [['--api-url'], {'dest': 'api_url', 'help': 'API URL excluding the ' +
                                                       'tenant id'}]
 AUTH_URL = [['--auth-url'], {'dest': 'auth_url', 'help': 'Auth URL'}]
+AUTH_TOKEN = [['--auth-token'], {'dest': 'auth_token', 'help': 'Auth token'}]
 
 DETAILS = [['--details'], {'dest': 'details', 'action': 'store_true',
                            'help': 'Display all the object attributes'}]
@@ -61,7 +62,8 @@ GLOBAL_OPTIONS = [
     API_KEY,
     DEBUG,
     NO_SSL_VERIFY,
-    AUTH_URL
+    AUTH_URL,
+    AUTH_TOKEN
 ]
 
 ACTION_OPTIONS = {
