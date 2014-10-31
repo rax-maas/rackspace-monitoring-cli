@@ -19,7 +19,7 @@ from raxmon_cli.common import run_action
 OPTIONS = [
     [['--entity-id'], {'dest': 'entity_id', 'help': 'Entity ID'}],
     [['--type'], {'dest': 'type', 'help': 'Agent Check Type (agent.memory, ' +
-      'agent.filesystem, agent.disk)'}],
+      'agent.filesystem, agent.disk, agent.plugin)'}],
 ]
 
 REQUIRED_OPTIONS = ['entity_id', 'type']
