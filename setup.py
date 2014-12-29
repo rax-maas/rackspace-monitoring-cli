@@ -23,6 +23,7 @@ from distutils.core import Command
 from subprocess import call
 from os.path import join as pjoin
 from pip.req import parse_requirements
+from pip.download import PipSession
 
 
 if (sys.version_info < (2, 5, 0) or sys.version_info >= (3, 0, 0)):
@@ -69,6 +70,7 @@ class PipOptions(object):
     def __init__(self):
         self.skip_requirements_regex = None
         self.default_vcs = None
+        self.isolated_mode = False
 
 
 class GenerateCompletionsCommand(Command):
@@ -98,7 +100,9 @@ pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
 
 
 options = PipOptions()
-requires = [str(ir.req) for ir in parse_requirements('requirements.txt', options=options)]
+session = PipSession()
+requires = [str(ir.req) for ir in parse_requirements('requirements.txt', options=options,
+            session=session)]
 
 if pre_python26:
     requires.append('simplejson')
