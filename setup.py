@@ -22,8 +22,6 @@ from distutils.core import setup
 from distutils.core import Command
 from subprocess import call
 from os.path import join as pjoin
-from pip.req import parse_requirements
-from pip.download import PipSession
 
 
 if (sys.version_info < (2, 5, 0) or sys.version_info >= (3, 0, 0)):
@@ -65,14 +63,6 @@ class Pep8Command(Command):
         sys.exit(retcode)
 
 
-# Create a PipOptions object that stubs out options that older versions of pip expect to exist.
-class PipOptions(object):
-    def __init__(self):
-        self.skip_requirements_regex = None
-        self.default_vcs = None
-        self.isolated_mode = False
-
-
 class GenerateCompletionsCommand(Command):
     description = "Generate bash completions file for all the commands"
     user_options = []
@@ -99,10 +89,7 @@ scripts = [pjoin(os.getcwd(), 'commands/', path) for path in scripts]
 pre_python26 = (sys.version_info[0] == 2 and sys.version_info[1] < 6)
 
 
-options = PipOptions()
-session = PipSession()
-requires = [str(ir.req) for ir in parse_requirements('requirements.txt', options=options,
-            session=session)]
+requires = ['rackspace-monitoring>=0.6.4']
 
 if pre_python26:
     requires.append('simplejson')
