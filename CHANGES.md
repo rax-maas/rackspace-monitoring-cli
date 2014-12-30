@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.6.9 - 2014-12-29:
+
+* Depend on rackspace-monitoring >= 0.6.5
+
 rackspace-monitoring-cli v0.6.6 - 2014-09-03:
 
 * Allow a pre-generated auth token to be passed in place of an API key
