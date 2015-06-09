@@ -130,6 +130,7 @@ def run_action(cmd_options, required_options, resource, action, callback):
         callback(instance, options, args, done)
     except Exception:
         traceback.print_exc(file=sys.stderr)
+        sys.exit(1)
 
 
 def get_instance(username, api_key, url, auth_url=None, auth_token=None):
