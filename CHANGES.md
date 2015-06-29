@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.6.10 - 2015-06-29:
+
+* Exit 1 when CLI encounters stack trace
+
 rackspace-monitoring-cli v0.6.9 - 2014-12-29:
 
 * Depend on rackspace-monitoring >= 0.6.5
