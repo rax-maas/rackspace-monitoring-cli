@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Licensed to the Apache Software Foundation (ASF) under one or more
 # contributor license agreements.  See the NOTICE file distributed with
 # this work for additional information regarding copyright ownership.
@@ -13,4 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = '0.7.1'
+from raxmon_cli.common import run_action
+
+OPTIONS = [
+    [['--label'], {'dest': 'label', 'help': 'Zone label'}],
+    [['--maximum_checks'], {'dest': 'maximum_checks', 'help': 'Maximum checks allowed for the zone'}],
+    [['--maximum_agents'], {'dest': 'maximum_agents', 'help': 'Maximum pollers allowed in the zone'}]
+]
+
+REQUIRED_OPTIONS = ['label']
+
+def callback(driver, options, args, callback):
+    callback(driver.create_monitoring_zone(label=options.label,
+                                  maximum_checks=options.maximum_checks,
+                                  maximum_agents=options.maximum_agents))
+
+run_action(OPTIONS, REQUIRED_OPTIONS, 'monitoring_zones', 'create', callback)

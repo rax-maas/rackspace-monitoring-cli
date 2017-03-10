@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.7.1 - 2017-03-10:
+
+* Add support for monitoring zones CRUD operations
+
 rackspace-monitoring-cli v0.6.10 - 2015-06-29:
 
 * Exit 1 when CLI encounters stack trace
