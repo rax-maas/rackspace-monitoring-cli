@@ -23,8 +23,8 @@ OPTIONS = [
 REQUIRED_OPTIONS = ['id']
 
 def callback(driver, options, args, callback):
-    pz = driver.get_monitoring_zone(zone_id=options.id)
-    status = driver.delete_monitoring_zone(zone=pz,
+    pz = driver.get_monitoring_zone(monitoring_zone_id=options.id)
+    status = driver.delete_monitoring_zone(monitoring_zone=pz,
                                   who=options.who,
                                   why=options.why)
 

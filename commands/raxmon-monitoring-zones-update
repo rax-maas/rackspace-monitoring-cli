@@ -29,10 +29,10 @@ OPTIONS = [
 REQUIRED_OPTIONS = ['id']
 
 def callback(driver, options, args, callback):
-    pz = driver.get_monitoring_zone(id=options.id)
+    pz = driver.get_monitoring_zone(monitoring_zone_id=options.id)
 
     data = instance_to_dict(options, ['label', 'maximum_checks', 'maximum_agents'], False)
-    result = driver.update_monitoring_zone(zone=pz, data=data,
+    result = driver.update_monitoring_zone(monitoring_zone=pz, data=data,
                                   who=options.who,
                                   why=options.why)
 
