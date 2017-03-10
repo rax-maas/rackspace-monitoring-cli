@@ -1,4 +1,4 @@
-rackspace-monitoring-cli v0.6.11 - 2017-03-11:
+rackspace-monitoring-cli v0.7.1 - 2017-03-10:
 
 * Add support for monitoring zones CRUD operations
 
