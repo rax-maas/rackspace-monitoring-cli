@@ -17,7 +17,7 @@
 from raxmon_cli.common import run_action
 
 OPTIONS = [
-    [['--label'], {'dest': 'label', 'help': 'Entity label'}],
+    [['--label'], {'dest': 'label', 'help': 'Zone label'}],
     [['--maximum_checks'], {'dest': 'maximum_checks', 'help': 'Maximum checks allowed for the zone'}],
     [['--maximum_agents'], {'dest': 'maximum_agents', 'help': 'Maximum pollers allowed in the zone'}]
 ]
