@@ -19,7 +19,7 @@ from raxmon_cli.common import run_action
 OPTIONS = [
     [['--agent-id'], {'dest': 'agent_id', 'help': 'Agent ID'}],
     [['--type'], {'dest': 'type', 'help': 'Info Type (memory, cpus, ' +
-      'network_interfaces, system, disks, filesystems, processes)'}],
+      'lshw, network_interfaces, system, disks, filesystems, processes)'}],
 ]
 
 REQUIRED_OPTIONS = ['agent_id', 'type']
