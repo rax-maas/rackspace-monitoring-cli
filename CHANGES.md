@@ -1,3 +1,7 @@
+rackspace-monitoring-cli v0.7.2 - 2017-04-11:
+
+* Added missing why and who option
+
 rackspace-monitoring-cli v0.7.1 - 2017-03-10:
 
 * Add support for monitoring zones CRUD operations
