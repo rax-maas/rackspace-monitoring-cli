@@ -46,7 +46,9 @@ def callback(driver, options, args, callback):
             options.details['args'] = [options.details['args']]
 
     data = instance_to_dict(options, keys, False)
-    result = driver.update_check(check=ch, data=data)
+    result = driver.update_check(check=ch, data=data,
+                                 who=options.who,
+                                 why=options.why)
     callback(result)
 
 run_action(OPTIONS, REQUIRED_OPTIONS, 'checks', 'update', callback)
