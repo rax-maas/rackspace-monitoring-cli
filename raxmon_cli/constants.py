@@ -53,7 +53,7 @@ WHO = [['--who'], {'dest': 'who',
                            'help': 'Person who performed the action'}]
 WHY = [['--why'], {'dest': 'why',
                            'help': 'Reason for this action which is stored in' +
-                           'the audit log'}]
+                           ' the audit log'}]
 
 
 GLOBAL_OPTIONS = [
