@@ -1,3 +1,8 @@
+rackspace-monitoring-cli v0.7.3 - 2018-06-19:
+
+* Upgraded ca cert bundle
+* Use system ca certs bundle if it exists
+
 rackspace-monitoring-cli v0.7.2 - 2017-04-11:
 
 * Added missing why and who option
