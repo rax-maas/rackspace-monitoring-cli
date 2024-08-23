@@ -24,7 +24,7 @@ def list_available_commands():
              file.startswith('raxmon-') and file != 'raxmon']
     files = sorted(files)
 
-    print 'Rackspace Monitoring Command Line Tool v%s' % (__version__)
+    print('Rackspace Monitoring Command Line Tool v%s' % (__version__))
     print('Available commands:\n')
     for file in files:
         print('- %s' % (file))
